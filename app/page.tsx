@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
-import { motion } from 'motion/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
@@ -121,9 +120,9 @@ export default function Page() {
           ))}
         </nav>
         <div className="flex items-center gap-4 text-[11px] font-semibold">
-          <a href="#masuk" className="hidden sm:block">
-            Masuk
-          </a>
+          <span className="rounded-full bg-[#1da974]/20 px-4 py-2 text-[#67e8a8]">
+            Segera Hadir
+          </span>
           <a
             href="#mulai"
             className="rounded-full bg-[#31df91] px-5 py-3 text-[#064a3e] shadow-lg shadow-[#22cc85]/20 transition hover:-translate-y-0.5"
@@ -154,7 +153,7 @@ export default function Page() {
                 <span className="text-[#30e497]">Lebih Bermakna</span>
               </h1>
               <p className="mt-6 max-w-[360px] text-sm leading-6 text-white/75">
-                Finesate adalah platform edukasi finansial berbasis gamifikasi yang membantu kamu
+                Finesa adalah platform edukasi finansial berbasis gamifikasi yang membantu kamu
                 memahami, mengelola, dan membangun masa depan keuangan dengan cara yang interaktif
                 dan menyenangkan.
               </p>
@@ -181,7 +180,7 @@ export default function Page() {
           <div className="reveal mx-auto grid max-w-[1160px] gap-10 lg:grid-cols-[1.05fr_2fr] lg:items-center">
             <div>
               <p className="eyebrow">FITUR UNGGULAN</p>
-              <h2 className="section-title">Kenapa Pilih Finesate?</h2>
+              <h2 className="section-title">Kenapa Pilih Finesa?</h2>
               <p className="mt-4 max-w-[300px] text-sm leading-6 text-[#508078]">
                 Kami mengubah pengalaman belajar finansial yang interaktif, praktis, dan disesuaikan
                 dengan kebutuhan generasi muda.
@@ -284,7 +283,7 @@ export default function Page() {
         <section className="relative overflow-hidden bg-[#064b44] px-6 py-20 text-white lg:px-10">
           <Image
             src={experienceImage}
-            alt="Tampilan aplikasi Finesate di beberapa perangkat"
+            alt="Tampilan aplikasi Finesa di beberapa perangkat"
             fill
             sizes="100vw"
             className="object-cover object-center"
@@ -293,7 +292,7 @@ export default function Page() {
           <div className="reveal relative mx-auto grid max-w-[1160px] gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="eyebrow text-[#67e8a8]">LIHAT LANGSUNG</p>
-              <h2 className="section-title max-w-[400px]">Pengalaman Belajar Finesate</h2>
+              <h2 className="section-title max-w-[400px]">Pengalaman Belajar Finesa</h2>
               <p className="mt-4 max-w-[360px] text-sm leading-6 text-white/70">
                 Antarmuka yang intuitif, desain yang menyenangkan, dan fitur lengkap untuk mendukung
                 perjalanan finansialmu.
@@ -318,33 +317,7 @@ export default function Page() {
                 Lihat Preview Aplikasi <ArrowRight className="ml-1 inline size-3" />
               </a>
             </div>
-            <div className="hidden">
-              <div className="absolute inset-x-14 top-0 h-[330px] rounded-[38px] border-[7px] border-[#093e38] bg-[#0c5f50] p-3 shadow-2xl">
-                <div className="h-full rounded-[27px] bg-[#e8f5df] p-5 text-[#075347]">
-                  <div className="flex justify-between text-[10px]">
-                    <span>Halo, Teman!</span>
-                    <span>Level 12</span>
-                  </div>
-                  <div className="mt-8 text-3xl font-bold">Rp 2.450.000</div>
-                  <div className="mt-8 rounded-2xl bg-white p-4 text-xs shadow-sm">
-                    Progress minggu ini{' '}
-                    <div className="mt-3 h-2 rounded-full bg-[#ccebd9]">
-                      <div className="h-full w-3/4 rounded-full bg-[#26c886]" />
-                    </div>
-                  </div>
-                  <div className="mt-3 grid grid-cols-3 gap-2 text-center text-[9px]">
-                    <span className="rounded-xl bg-white p-3">Materi</span>
-                    <span className="rounded-xl bg-white p-3">Misi</span>
-                    <span className="rounded-xl bg-white p-3">Pencapaian</span>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute bottom-5 left-0 rounded-2xl bg-white px-4 py-3 text-xs font-semibold text-[#09634f] shadow-xl">
-                +50 XP
-                <br />
-                <span className="text-[10px] font-normal">Catat Pengeluaran</span>
-              </div>
-            </div>
+            <div />
           </div>
         </section>
 
@@ -353,14 +326,14 @@ export default function Page() {
             <p className="eyebrow">APA KATA MEREKA</p>
             <h2 className="section-title">Cerita Nyata, Dampak Nyata</h2>
             <p className="mx-auto mt-3 max-w-[460px] text-sm text-[#719288]">
-              Bergabung bersama ribuan pengguna yang sudah merasakan manfaat Finesate.
+              Bergabung bersama ribuan pengguna yang sudah merasakan manfaat Finesa.
             </p>
             <div className="mt-10 grid gap-4 text-left md:grid-cols-3">
               {[
                 [
                   'Dinda Ayu',
                   'Mahasiswa',
-                  '“Dulu aku selalu bingung ngatur uang jajan. Setelah pakai Finesate, aku jadi lebih paham dan bisa menabung tiap bulan!”',
+                  '“Dulu aku selalu bingung ngatur uang jajan. Setelah pakai Finesa, aku jadi lebih paham dan bisa menabung tiap bulan!”',
                 ],
                 [
                   'Ricky Pratama',
@@ -379,7 +352,7 @@ export default function Page() {
                 >
                   <div className="flex items-center gap-3">
                     <div className="flex size-9 items-center justify-center rounded-full bg-[#c9e5d3] text-xs font-bold">
-                      {name[0]}
+                      {name?.[0]}
                     </div>
                     <div>
                       <p className="text-xs font-semibold">{name}</p>
@@ -418,7 +391,7 @@ export default function Page() {
           <div className="relative mx-auto flex max-w-[1040px] flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
             <div>
               <p className="eyebrow text-[#67e8a8]">SIAP MELANGKAH?</p>
-              <h2 className="mt-3 text-3xl font-semibold">Download Finesate Sekarang!</h2>
+              <h2 className="mt-3 text-3xl font-semibold">Download Finesa Sekarang!</h2>
               <p className="mt-3 max-w-[350px] text-sm text-white/70">
                 Jelajahi dunia finansial dengan lebih seru dan bermakna.
               </p>
@@ -461,7 +434,7 @@ export default function Page() {
           </div>
         </div>
         <div className="mx-auto mt-6 flex max-w-[1160px] justify-between border-t border-white/10 pt-5 text-[9px] text-white/40">
-          <span>© 2025 Finesate. Semua hak dilindungi.</span>
+          <span>© 2025 Finesa. Semua hak dilindungi.</span>
           <span className="hidden sm:block">Belajar • Berkembang • Bebas Finansial</span>
         </div>
       </footer>
