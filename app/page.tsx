@@ -89,10 +89,7 @@ export default function Page() {
   }, [])
 
   return (
-    <div
-      ref={pageRef}
-      className="min-h-screen overflow-hidden bg-[#f6f8ed] text-[#064a3e]"
-    >
+    <div ref={pageRef} className="min-h-screen overflow-hidden bg-[#f6f8ed] text-[#064a3e]">
       <header className="absolute inset-x-0 top-0 z-20 mx-auto flex max-w-[1240px] items-center justify-between px-6 py-5 text-white lg:px-10">
         <a
           href="#beranda"
@@ -137,10 +134,7 @@ export default function Page() {
       </header>
 
       <main>
-        <section
-          id="beranda"
-          className="relative min-h-[690px] bg-[#07534a] text-white"
-        >
+        <section id="beranda" className="relative min-h-[690px] bg-[#07534a] text-white">
           <Image
             src={heroImage}
             alt="Dua pelajar menjelajah dunia finansial Finesa"
@@ -160,9 +154,9 @@ export default function Page() {
                 <span className="text-[#30e497]">Lebih Bermakna</span>
               </h1>
               <p className="mt-6 max-w-[360px] text-sm leading-6 text-white/75">
-                Finesate adalah platform edukasi finansial berbasis gamifikasi
-                yang membantu kamu memahami, mengelola, dan membangun masa depan
-                keuangan dengan cara yang interaktif dan menyenangkan.
+                Finesate adalah platform edukasi finansial berbasis gamifikasi yang membantu kamu
+                memahami, mengelola, dan membangun masa depan keuangan dengan cara yang interaktif
+                dan menyenangkan.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
@@ -176,12 +170,8 @@ export default function Page() {
                 </button>
               </div>
               <div className="mt-8 flex gap-2 text-[10px] font-medium">
-                <span className="rounded-md bg-black px-3 py-2 text-white">
-                  ▶ Google Play
-                </span>
-                <span className="rounded-md bg-black px-3 py-2 text-white">
-                  ● App Store
-                </span>
+                <span className="rounded-md bg-black px-3 py-2 text-white">▶ Google Play</span>
+                <span className="rounded-md bg-black px-3 py-2 text-white">● App Store</span>
               </div>
             </div>
           </div>
@@ -193,15 +183,14 @@ export default function Page() {
               <p className="eyebrow">FITUR UNGGULAN</p>
               <h2 className="section-title">Kenapa Pilih Finesate?</h2>
               <p className="mt-4 max-w-[300px] text-sm leading-6 text-[#508078]">
-                Kami mengubah pengalaman belajar finansial yang interaktif,
-                praktis, dan disesuaikan dengan kebutuhan generasi muda.
+                Kami mengubah pengalaman belajar finansial yang interaktif, praktis, dan disesuaikan
+                dengan kebutuhan generasi muda.
               </p>
               <a
                 href="#materi"
                 className="mt-7 inline-block rounded-full bg-[#1da974] px-5 py-3 text-xs font-semibold text-white"
               >
-                Jelajahi Semua Fitur{' '}
-                <ArrowRight className="ml-1 inline size-3" />
+                Jelajahi Semua Fitur <ArrowRight className="ml-1 inline size-3" />
               </a>
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -218,9 +207,7 @@ export default function Page() {
                     )}
                   </div>
                   <h3 className="text-sm font-semibold">{feature.title}</h3>
-                  <p className="mt-2 text-[11px] leading-5 text-[#6b8e84]">
-                    {feature.text}
-                  </p>
+                  <p className="mt-2 text-[11px] leading-5 text-[#6b8e84]">{feature.text}</p>
                 </div>
               ))}
             </div>
@@ -245,15 +232,14 @@ export default function Page() {
                 Lebih Mandiri
               </h2>
               <p className="mt-5 text-sm leading-6 text-white/70">
-                Ikuti perjalanan belajar yang terstruktur, mulai dari memahami
-                dasar-dasar hingga membangun kebiasaan finansial yang kuat.
+                Ikuti perjalanan belajar yang terstruktur, mulai dari memahami dasar-dasar hingga
+                membangun kebiasaan finansial yang kuat.
               </p>
               <a
                 href="#materi"
                 className="mt-7 inline-block rounded-full bg-[#2fda90] px-5 py-3 text-xs font-semibold text-[#064a3e]"
               >
-                Lihat Detail Perjalanan{' '}
-                <ArrowRight className="ml-1 inline size-3" />
+                Lihat Detail Perjalanan <ArrowRight className="ml-1 inline size-3" />
               </a>
             </div>
           </div>
@@ -267,8 +253,8 @@ export default function Page() {
                 Topik yang Kamu Butuhkan, Dalam Satu Tempat
               </h2>
               <p className="mt-4 max-w-[320px] text-sm leading-6 text-[#508078]">
-                Pelajari berbagai materi finansial yang relevan dengan kehidupan
-                sehari-hari dan masa depanmu.
+                Pelajari berbagai materi finansial yang relevan dengan kehidupan sehari-hari dan
+                masa depanmu.
               </p>
               <a
                 href="#mulai"
@@ -284,15 +270,11 @@ export default function Page() {
                   className="group rounded-2xl border border-[#dce7dd] bg-white/70 p-5 transition hover:-translate-y-1 hover:border-[#4ed59a]"
                 >
                   <div className="flex items-start justify-between">
-                    <span className="text-lg font-bold text-[#11865f]">
-                      {icon}
-                    </span>
+                    <span className="text-lg font-bold text-[#11865f]">{icon}</span>
                     <ArrowRight className="size-4 text-[#7fa89a] transition group-hover:translate-x-1" />
                   </div>
                   <h3 className="mt-5 text-sm font-semibold">{title}</h3>
-                  <p className="mt-2 text-[11px] leading-5 text-[#719288]">
-                    {text}
-                  </p>
+                  <p className="mt-2 text-[11px] leading-5 text-[#719288]">{text}</p>
                 </div>
               ))}
             </div>
@@ -311,12 +293,10 @@ export default function Page() {
           <div className="reveal relative mx-auto grid max-w-[1160px] gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="eyebrow text-[#67e8a8]">LIHAT LANGSUNG</p>
-              <h2 className="section-title max-w-[400px]">
-                Pengalaman Belajar Finesate
-              </h2>
+              <h2 className="section-title max-w-[400px]">Pengalaman Belajar Finesate</h2>
               <p className="mt-4 max-w-[360px] text-sm leading-6 text-white/70">
-                Antarmuka yang intuitif, desain yang menyenangkan, dan fitur
-                lengkap untuk mendukung perjalanan finansialmu.
+                Antarmuka yang intuitif, desain yang menyenangkan, dan fitur lengkap untuk mendukung
+                perjalanan finansialmu.
               </p>
               <ul className="mt-6 flex flex-col gap-3 text-sm text-white/85">
                 {[
@@ -335,8 +315,7 @@ export default function Page() {
                 href="#mulai"
                 className="mt-7 inline-block rounded-full bg-[#1da974] px-5 py-3 text-xs font-semibold text-white"
               >
-                Lihat Preview Aplikasi{' '}
-                <ArrowRight className="ml-1 inline size-3" />
+                Lihat Preview Aplikasi <ArrowRight className="ml-1 inline size-3" />
               </a>
             </div>
             <div className="hidden">
@@ -363,9 +342,7 @@ export default function Page() {
               <div className="absolute bottom-5 left-0 rounded-2xl bg-white px-4 py-3 text-xs font-semibold text-[#09634f] shadow-xl">
                 +50 XP
                 <br />
-                <span className="text-[10px] font-normal">
-                  Catat Pengeluaran
-                </span>
+                <span className="text-[10px] font-normal">Catat Pengeluaran</span>
               </div>
             </div>
           </div>
@@ -376,8 +353,7 @@ export default function Page() {
             <p className="eyebrow">APA KATA MEREKA</p>
             <h2 className="section-title">Cerita Nyata, Dampak Nyata</h2>
             <p className="mx-auto mt-3 max-w-[460px] text-sm text-[#719288]">
-              Bergabung bersama ribuan pengguna yang sudah merasakan manfaat
-              Finesate.
+              Bergabung bersama ribuan pengguna yang sudah merasakan manfaat Finesate.
             </p>
             <div className="mt-10 grid gap-4 text-left md:grid-cols-3">
               {[
@@ -410,12 +386,8 @@ export default function Page() {
                       <p className="text-[10px] text-[#80a095]">{role}</p>
                     </div>
                   </div>
-                  <p className="mt-5 text-sm leading-6 text-[#668a7f]">
-                    {quote}
-                  </p>
-                  <p className="mt-4 text-sm tracking-widest text-[#edb735]">
-                    ★★★★★
-                  </p>
+                  <p className="mt-5 text-sm leading-6 text-[#668a7f]">{quote}</p>
+                  <p className="mt-4 text-sm tracking-widest text-[#edb735]">★★★★★</p>
                 </blockquote>
               ))}
             </div>
@@ -446,19 +418,13 @@ export default function Page() {
           <div className="relative mx-auto flex max-w-[1040px] flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
             <div>
               <p className="eyebrow text-[#67e8a8]">SIAP MELANGKAH?</p>
-              <h2 className="mt-3 text-3xl font-semibold">
-                Download Finesate Sekarang!
-              </h2>
+              <h2 className="mt-3 text-3xl font-semibold">Download Finesate Sekarang!</h2>
               <p className="mt-3 max-w-[350px] text-sm text-white/70">
                 Jelajahi dunia finansial dengan lebih seru dan bermakna.
               </p>
               <div className="mt-5 flex gap-2 text-[10px] font-medium">
-                <span className="rounded-md bg-black px-3 py-2">
-                  ▶ Google Play
-                </span>
-                <span className="rounded-md bg-black px-3 py-2">
-                  ● App Store
-                </span>
+                <span className="rounded-md bg-black px-3 py-2">▶ Google Play</span>
+                <span className="rounded-md bg-black px-3 py-2">● App Store</span>
               </div>
             </div>
             <div className="flex size-32 items-center justify-center rounded-xl bg-white p-3 text-center text-xs font-bold text-[#0a614f] shadow-2xl">
@@ -472,10 +438,7 @@ export default function Page() {
 
       <footer className="bg-[#043d39] px-6 py-7 text-white/75 lg:px-10">
         <div className="mx-auto flex max-w-[1160px] flex-col items-center justify-between gap-5 sm:flex-row">
-          <a
-            href="#beranda"
-            className="flex items-center gap-2 text-lg font-semibold text-white"
-          >
+          <a href="#beranda" className="flex items-center gap-2 text-lg font-semibold text-white">
             <Image
               src="/assets/logo-finesa-green.webp"
               alt=""
@@ -499,9 +462,7 @@ export default function Page() {
         </div>
         <div className="mx-auto mt-6 flex max-w-[1160px] justify-between border-t border-white/10 pt-5 text-[9px] text-white/40">
           <span>© 2025 Finesate. Semua hak dilindungi.</span>
-          <span className="hidden sm:block">
-            Belajar • Berkembang • Bebas Finansial
-          </span>
+          <span className="hidden sm:block">Belajar • Berkembang • Bebas Finansial</span>
         </div>
       </footer>
     </div>
