@@ -14,6 +14,7 @@ Buat testimonial carousel berfungsi. Labeli testimonial sebagai "Contoh".
 ## Acceptance Criteria
 
 ### Konten prospectif (Showcase section)
+
 - [ ] "Mode Offline" → "Mode Offline (rencana)"
 - [ ] "Notifikasi & Pengingat" → "Notifikasi & Pengingat (akan hadir)"
 - [ ] "Tersedia di Semua Perangkat" → "Tersedia di Semua Perangkat (akan datang)"
@@ -21,12 +22,14 @@ Buat testimonial carousel berfungsi. Labeli testimonial sebagai "Contoh".
 - [ ] "Bergabung bersama ribuan pengguna" → ganti menjadi prospectif
 
 ### Testimonial (Kenapa Finesa section)
+
 - [ ] Section renamed dari "Testimoni" ke "Kenapa Finesa" di eyebrow + heading
 - [ ] 3 testimonial dipertahankan
 - [ ] Setiap testimonial punya label "Contoh" yang jelas (bukan disembunyikan)
 - [ ] "★" rating dipertahankan tapi dengan catatan kecil "ilustrasi"
 
 ### Carousel fungsional
+
 - [ ] State: `useState<number>(0)` untuk index aktif
 - [ ] Prev/Next buttons memutar index (wrap around)
 - [ ] Keyboard: arrow keys navigasi (left/right)
@@ -37,6 +40,7 @@ Buat testimonial carousel berfungsi. Labeli testimonial sebagai "Contoh".
 - [ ] Mobile: touch swipe? (opsional, bisa ditambahkan nanti)
 
 ### Verification
+
 - [ ] `pnpm lint` passing
 - [ ] `pnpm typecheck` passing
 - [ ] `pnpm build` passing

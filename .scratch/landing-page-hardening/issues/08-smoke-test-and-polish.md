@@ -14,6 +14,7 @@ benar-benar berfungsi.
 ## Acceptance Criteria
 
 ### Smoke tests (Vitest + Testing Library)
+
 - [ ] `__tests__/navigation.test.tsx`:
   - Semua `<a href="#section">` di header punya `id="section"` yang sesuai
   - Tidak ada broken anchor
@@ -36,6 +37,7 @@ benar-benar berfungsi.
   - Klik prev → index berubah (wrap)
 
 ### Final verification
+
 - [ ] `pnpm lint` passing
 - [ ] `pnpm typecheck` passing
 - [ ] `pnpm test` passing (semua test di atas)
@@ -45,6 +47,7 @@ benar-benar berfungsi.
 - [ ] A11y check: reduced motion berfungsi, teks terbaca
 
 ### Commit
+
 - [ ] Commit terakhir: "feat: landing page hardening complete"
 
 ## Notes

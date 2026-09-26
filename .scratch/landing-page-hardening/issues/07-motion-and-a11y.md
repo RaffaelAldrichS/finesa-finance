@@ -14,6 +14,7 @@ Tingkatkan lantai ukuran teks ke 12px.
 ## Acceptance Criteria
 
 ### GSAP reduced-motion
+
 - [ ] `gsap.matchMedia()` dipakai di `Reveal.tsx` untuk guard reduced-motion
 - [ ] Jika `prefers-reduced-motion: reduce`:
   - SplitText tidak di-animate (langsung muncul)
@@ -25,6 +26,7 @@ Tingkatkan lantai ukuran teks ke 12px.
   - Section images loaded (onLoad callback)
 
 ### Ukuran teks minimum
+
 - [ ] Semua `text-[9px]` → minimal `text-[12px]`
 - [ ] Semua `text-[10px]` → minimal `text-[12px]`
 - [ ] Semua `text-[11px]` → minimal `text-[12px]`
@@ -32,6 +34,7 @@ Tingkatkan lantai ukuran teks ke 12px.
 - [ ] Periksa: tidak ada teks yang lebih kecil dari 12px di seluruh halaman
 
 ### A11y tambahan
+
 - [ ] Semua `<a href>` punya `aria-label` jika konteks tidak jelas
 - [ ] Tombol carousel punya `aria-label` ("Testimoni sebelumnya", "Testimoni berikutnya")
 - [ ] FAQ accordion: `aria-expanded` pada trigger (otomatis dari Base UI)
@@ -39,6 +42,7 @@ Tingkatkan lantai ukuran teks ke 12px.
 - [ ] Skip link ke konten utama? (opsional, nice-to-have)
 
 ### Verification
+
 - [ ] `pnpm lint` passing
 - [ ] `pnpm typecheck` passing
 - [ ] `pnpm build` passing

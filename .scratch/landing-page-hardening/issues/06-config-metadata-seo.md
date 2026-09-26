@@ -14,6 +14,7 @@ Tambah OG image, sitemap, robots, security headers.
 ## Acceptance Criteria
 
 ### next.config.mjs
+
 - [ ] `typescript.ignoreBuildErrors: true` sudah dihapus (ticket 01)
 - [ ] `images.unoptimized: true` dihapus → next/image optimization aktif
 - [ ] Security headers ditambah:
@@ -24,6 +25,7 @@ Tambah OG image, sitemap, robots, security headers.
   ```
 
 ### Metadata (app/layout.tsx)
+
 - [ ] `generator: 'v0.app'` dihapus
 - [ ] `metadataBase` ditambah (URL Vercel production, misal `https://finesa.vercel.app`)
 - [ ] OpenGraph ditambah: title, description, images
@@ -31,19 +33,23 @@ Tambah OG image, sitemap, robots, security headers.
 - [ ] `icons.icon` dipertahankan (icon-light, icon-dark, icon.svg dari v0)
 
 ### Sitemap & Robots
+
 - [ ] `app/sitemap.ts` dibuat (static sitemap untuk landing page)
 - [ ] `app/robots.ts` dibuat (izinkan semua crawler)
 
 ### Package
+
 - [ ] `"name": "my-project"` → `"name": "finesa"`
 - [ ] `shadcn` sudah di `devDependencies` (ticket 02)
 - [ ] `motion` sudah dihapus (ticket 02)
 
 ### tsconfig.json
+
 - [ ] `"target": "ES6"` → `"target": "ES2022"`
 - [ ] `noUncheckedIndexedAccess: true` ditambah
 
 ### Verification
+
 - [ ] `pnpm lint` passing
 - [ ] `pnpm typecheck` passing (termasuk noUncheckedIndexedAccess)
 - [ ] `pnpm build` passing

@@ -31,13 +31,14 @@ Konten: saya draf, user review.
   - Bagaimana dengan privasi data?
   - Materi apa saja yang tersedia?
 - [ ] FAQ ditambahkan ke nav header: `['Beranda', 'Fitur', 'Materi', 'FAQ', 'Testimoni']`
-  (sebelum Testimoni, bukan sesudah)
+      (sebelum Testimoni, bukan sesudah)
 - [ ] `id="faq"` ditambahkan ke section
 - [ ] Smooth scroll ke FAQ dari nav link berfungsi
 - [ ] Token semantik dipakai untuk warna
 - [ ] Ukuran teks minimum 12px
 
 ### Verification
+
 - [ ] `pnpm lint` passing
 - [ ] `pnpm typecheck` passing
 - [ ] `pnpm build` passing

@@ -7,7 +7,8 @@ const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 
 export const metadata: Metadata = {
   title: 'Finesate — Belajar Finansial Jadi Lebih Seru',
-  description: 'Platform edukasi finansial berbasis gamifikasi untuk membangun masa depan yang lebih bermakna.',
+  description:
+    'Platform edukasi finansial berbasis gamifikasi untuk membangun masa depan yang lebih bermakna.',
   generator: 'v0.app',
   icons: {
     icon: [

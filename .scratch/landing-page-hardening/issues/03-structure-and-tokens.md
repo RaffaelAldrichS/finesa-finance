@@ -14,6 +14,7 @@ terpisah. Buat 10 token semantik di globals.css. Isolasi GSAP ke client wrapper.
 ## Acceptance Criteria
 
 ### Struktur komponen
+
 - [ ] `components/sections/Header.tsx` — nav, logo, badge Segera Hadir
 - [ ] `components/sections/Hero.tsx` — hero dengan image + teks + CTA
 - [ ] `components/sections/Features.tsx` — 4 kartu fitur
@@ -28,9 +29,10 @@ terpisah. Buat 10 token semantik di globals.css. Isolasi GSAP ke client wrapper.
 - [ ] Data (features, topics, testimonials) dipindah ke `lib/content.ts`
 
 ### Token semantik
+
 - [ ] 10 token ditambah ke `globals.css` `@theme inline`:
-  `--surface`, `--surface-strong`, `--brand`, `--brand-hover`, `--on-brand`,
-  `--text`, `--text-muted`, `--border`, `--surface-elevated`, `--surface-overlay`
+      `--surface`, `--surface-strong`, `--brand`, `--brand-hover`, `--on-brand`,
+      `--text`, `--text-muted`, `--border`, `--surface-elevated`, `--surface-overlay`
 - [ ] Mapping:
   ```
   --surface:          #f6f8ed
@@ -49,11 +51,13 @@ terpisah. Buat 10 token semantik di globals.css. Isolasi GSAP ke client wrapper.
 - [ ] Semua `border-[#hex]` diganti ke `border-border`
 
 ### Server/Client boundary
+
 - [ ] `app/page.tsx` tidak pakai `'use client'`
 - [ ] GSAP import hanya di `components/Reveal.tsx` (client component)
 - [ ] `components/Reveal.tsx` wrap children dengan `gsap.context()` + `ScrollTrigger.refresh()`
 
 ### Verification
+
 - [ ] `pnpm lint` passing
 - [ ] `pnpm typecheck` passing
 - [ ] `pnpm build` passing

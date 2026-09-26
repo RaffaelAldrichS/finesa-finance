@@ -27,15 +27,15 @@ Landing page saja. Tidak ada app, auth, backend, atau database.
 
 ## Keputusan yang dibekukan
 
-| # | Keputusan | ADR |
-|---|---|---|
-| 1 | Scope = landing page only | ADR-0001 |
-| 2 | CTA = badge "Segera Hadir", bukan link mati | ADR-0002 |
-| 3 | 38 hex → ~10 token semantik | ADR-0003 |
-| 4 | Light-only, hapus jejak dark | ADR-0004 |
-| 5 | ESLint 9 flat + Prettier, bukan Biome | ADR-0005 |
-| 6 | Vitest + RTL smoke test | ADR-0006 |
-| 7 | Simpan char-female/male, logo-finesa.webp | ADR-0007 |
+| #   | Keputusan                                   | ADR      |
+| --- | ------------------------------------------- | -------- |
+| 1   | Scope = landing page only                   | ADR-0001 |
+| 2   | CTA = badge "Segera Hadir", bukan link mati | ADR-0002 |
+| 3   | 38 hex → ~10 token semantik                 | ADR-0003 |
+| 4   | Light-only, hapus jejak dark                | ADR-0004 |
+| 5   | ESLint 9 flat + Prettier, bukan Biome       | ADR-0005 |
+| 6   | Vitest + RTL smoke test                     | ADR-0006 |
+| 7   | Simpan char-female/male, logo-finesa.webp   | ADR-0007 |
 
 ## Bug brand
 
@@ -170,6 +170,7 @@ dinaikkan. 9px → minimal 12px.
 ## .gitignore
 
 Tambah:
+
 - `tsconfig.tsbuildinfo`
 - `.codegraph/`
 - `.env`
@@ -188,16 +189,16 @@ Lihat CONTEXT.md bagian "Aset yang Disimpan Sadar".
 
 ## Urutan ticket
 
-| # | Judul | Blocked by |
-|---|---|---|
-| 01 | Baseline & tooling | — |
-| 02 | Brand fix & dead code | 01 |
-| 03 | Struktur section & token | 02 |
-| 04 | FAQ section | 03 |
-| 05 | Konten prospectif & carousel | 03 |
-| 06 | Config, metadata, SEO | 02 |
-| 07 | Motion & a11y | 03 |
-| 08 | Smoke test & final polish | 04, 05, 06, 07 |
+| #   | Judul                        | Blocked by     |
+| --- | ---------------------------- | -------------- |
+| 01  | Baseline & tooling           | —              |
+| 02  | Brand fix & dead code        | 01             |
+| 03  | Struktur section & token     | 02             |
+| 04  | FAQ section                  | 03             |
+| 05  | Konten prospectif & carousel | 03             |
+| 06  | Config, metadata, SEO        | 02             |
+| 07  | Motion & a11y                | 03             |
+| 08  | Smoke test & final polish    | 04, 05, 06, 07 |
 
 ## Definition of done
 
