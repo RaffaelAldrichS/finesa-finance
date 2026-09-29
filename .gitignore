@@ -7,12 +7,42 @@ __v0_jsx-dev-runtime.ts
 .vercel/
 
 # Environment variables
+.env
 .env*.local
 
 # Common ignores
 node_modules
 .next/
-.DS_Store
-.env
+out/
+dist/
+build/
+coverage/
+test-results/
+.playwright/
 *.tsbuildinfo
 .codegraph/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# Logs and temp files
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tmp
+*.temp
+*.bak
+
+# Keys and certificates
+*.pem
+*.key
+*.cert
+*.p12
+credentials.json
+serviceAccountKey.json
