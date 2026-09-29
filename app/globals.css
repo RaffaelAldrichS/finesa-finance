@@ -97,8 +97,8 @@
   --sidebar-ring: oklch(0.708 0 0);
   --surface: #f6f8ed;
   --surface-strong: #07534a;
-  --brand: #1da974;
-  --brand-hover: #26c886;
+  --brand: #15805d;
+  --brand-hover: #43dfa4;
   --on-brand: #064a3e;
   --text: #064a3e;
   --text-muted: #4c7a72;
@@ -118,13 +118,23 @@
     @apply bg-background text-foreground;
     font-family: var(--font-outfit), sans-serif;
   }
-}
 
-.eyebrow {
-  color: var(--brand);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.24em;
+  /* Kept in this layer so a utility such as text-brand-hover can override
+     the default ink without losing the fallback on plain eyebrows. */
+  .eyebrow {
+    color: var(--brand);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.24em;
+  }
+
+  /* Two rings so the indicator always separates from its backdrop: the
+     outline reads on cream, the halo reads on the dark sections. */
+  :focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--surface);
+  }
 }
 
 .section-title {

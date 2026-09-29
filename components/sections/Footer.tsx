@@ -25,12 +25,12 @@ export function Footer() {
             </Link>
           ))}
         </nav>
-        <div className="flex gap-3 text-[12px] font-bold text-white/50" aria-label="Media sosial">
+        <div className="flex gap-3 text-[12px] font-bold text-white/70" aria-label="Media sosial">
           <span aria-label="Instagram">IG</span>
           <span aria-label="Youtube">YT</span>
         </div>
       </div>
-      <div className="mx-auto mt-6 flex max-w-[1160px] justify-between border-t border-white/10 pt-5 text-[12px] text-white/40">
+      <div className="mx-auto mt-6 flex max-w-[1160px] justify-between border-t border-white/10 pt-5 text-[12px] text-white/70">
         <span>© {currentYear} Finesa. Semua hak dilindungi.</span>
         <span className="hidden sm:block">Belajar • Berkembang • Bebas Finansial</span>
       </div>

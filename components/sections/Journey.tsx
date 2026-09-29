@@ -15,7 +15,7 @@ export function Journey() {
         className="journey-art object-cover object-center"
         style={{ height: '120%', bottom: 'auto' }}
       />
-      <div className="from-surface-overlay absolute inset-0 bg-gradient-to-r via-black/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-transparent" />
       <div className="reveal relative mx-auto flex min-h-[480px] max-w-[1240px] items-start px-6 py-20 lg:px-10">
         <div className="max-w-[390px]">
           <p className="eyebrow text-brand-hover">PERJALANAN FINANSIALMU</p>
