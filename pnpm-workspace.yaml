@@ -6,3 +6,18 @@ minimumReleaseAgeExclude:
 
 allowBuilds:
   unrs-resolver: true
+
+# Semua ini transitif dari `next`, bukan dependensi langsung kita, jadi
+# tidak bisa kita perbarui lewat `pnpm update`. Override pin versi yang
+# sudah ditambal. Semuanya build-time / image-processing, tidak pernah
+# masuk bundle browser, tapi tetap ditambal supaya `pnpm audit` bersih.
+#
+#   nanoid                     GHSA-2v37-7h3g-55p8
+#   browserslist               GHSA-c83g-rgw3-j3cx, GHSA-73wf-gq98-2v4g
+#   sharp                      GHSA-rgj7-g3m4-5g8c
+#   baseline-browser-mapping   GHSA-w5vr-8v7q-w6rv
+overrides:
+  nanoid: '>=3.3.18'
+  browserslist: '>=4.28.7'
+  sharp: '>=0.35.4'
+  baseline-browser-mapping: '>=2.11.0'
