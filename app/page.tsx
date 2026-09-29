@@ -8,10 +8,14 @@ import { Testimonials } from '@/components/sections/Testimonials'
 import { CTA } from '@/components/sections/CTA'
 import { Footer } from '@/components/sections/Footer'
 import { Reveal } from '@/components/Reveal'
+import { Intro } from '@/components/Intro'
+
+import { FAQ } from '@/components/sections/FAQ'
 
 export default function Page() {
   return (
     <div className="bg-surface text-text min-h-screen overflow-hidden">
+      <Intro />
       <Header />
       <main id="konten">
         <Reveal>
@@ -20,6 +24,7 @@ export default function Page() {
           <Journey />
           <Topics />
           <Showcase />
+          <FAQ />
           <Testimonials />
           <CTA />
         </Reveal>

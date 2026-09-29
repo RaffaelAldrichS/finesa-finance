@@ -6,9 +6,23 @@ import './globals.css'
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://finesa.id'),
   title: 'Finesa — Belajar Finansial Jadi Lebih Seru',
   description:
     'Platform edukasi finansial berbasis gamifikasi untuk membangun masa depan yang lebih bermakna.',
+  openGraph: {
+    title: 'Finesa — Belajar Finansial Jadi Lebih Seru',
+    description: 'Platform edukasi finansial berbasis gamifikasi untuk generasi muda Indonesia.',
+    url: 'https://finesa.id',
+    siteName: 'Finesa',
+    locale: 'id_ID',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Finesa — Belajar Finansial Jadi Lebih Seru',
+    description: 'Platform edukasi finansial berbasis gamifikasi untuk generasi muda Indonesia.',
+  },
   icons: {
     icon: [
       {

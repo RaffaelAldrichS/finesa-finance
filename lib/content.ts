@@ -1,35 +1,50 @@
-import { Gamepad2, LineChart, Users } from 'lucide-react'
+import {
+  Gamepad2,
+  LineChart,
+  Users,
+  Trophy,
+  Wallet,
+  PiggyBank,
+  TrendingUp,
+  CreditCard,
+  ShieldCheck,
+  Target,
+} from 'lucide-react'
 
 export const features = [
   {
     icon: Gamepad2,
+    concept: 'LEARN',
     title: 'Materi Interaktif',
     text: 'Belajar dengan konten ringan, visual, dan mudah dipahami.',
   },
   {
-    icon: '★',
-    title: 'Gamifikasi',
-    text: 'Kumpulkan XP, capai achievement, dan bangun streak.',
-  },
-  {
     icon: LineChart,
+    concept: 'PRACTICE',
     title: 'Simulasi Finansial',
     text: 'Latihan langsung mengelola keuangan dalam situasi nyata.',
   },
   {
+    icon: Trophy,
+    concept: 'PLAY',
+    title: 'Gamifikasi',
+    text: 'Kumpulkan XP, capai achievement, dan bangun streak.',
+  },
+  {
     icon: Users,
+    concept: 'BUILD',
     title: 'Komunitas',
     text: 'Bertumbuh bersama pengguna lain yang punya tujuan sama.',
   },
 ] as const
 
 export const topics = [
-  { icon: '◈', title: 'Budgeting', text: 'Atur pengeluaran, raih tujuan.' },
-  { icon: '✦', title: 'Saving', text: 'Tabung hari ini, untuk nanti.' },
-  { icon: '↗', title: 'Investasi', text: 'Tumbuhkan aset, raih kebebasan.' },
-  { icon: '◉', title: 'Kredit & Hutang', text: 'Kelola dengan bijak, hindari beban.' },
-  { icon: '◇', title: 'Asuransi', text: 'Lindungi diri, protect masa depan.' },
-  { icon: '⌁', title: 'Perencanaan Masa Depan', text: 'Siapkan langkah hari ini.' },
+  { icon: Wallet, title: 'Budgeting', text: 'Atur pengeluaran, raih tujuan.' },
+  { icon: PiggyBank, title: 'Saving', text: 'Tabung hari ini, untuk nanti.' },
+  { icon: TrendingUp, title: 'Investasi', text: 'Tumbuhkan aset, raih kebebasan.' },
+  { icon: CreditCard, title: 'Kredit & Hutang', text: 'Kelola dengan bijak, hindari beban.' },
+  { icon: ShieldCheck, title: 'Asuransi', text: 'Lindungi diri, protect masa depan.' },
+  { icon: Target, title: 'Perencanaan Masa Depan', text: 'Siapkan langkah hari ini.' },
 ] as const
 
 export const testimonials = [
@@ -53,10 +68,17 @@ export const testimonials = [
 ] as const
 
 export const journeyFeatures = [
-  'Progress & Achievement',
-  'Notifikasi & Pengingat',
-  'Mode Offline',
-  'Tersedia di Semua Perangkat',
+  'Progress & Achievement (Rencana)',
+  'Notifikasi & Pengingat (Akan hadir)',
+  'Mode Offline (Rencana)',
+  'Tersedia di Semua Perangkat (Akan tersedia)',
 ] as const
 
-export const navItems = ['Beranda', 'Fitur', 'Materi', 'Testimoni'] as const
+export const navItems = [
+  'Beranda',
+  'Fitur',
+  'Perjalanan',
+  'Materi',
+  'FAQ',
+  'Kenapa Finesa',
+] as const

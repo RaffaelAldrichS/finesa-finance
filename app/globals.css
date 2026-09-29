@@ -95,16 +95,16 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --surface: #f6f8ed;
-  --surface-strong: #07534a;
-  --brand: #15805d;
-  --brand-hover: #43dfa4;
-  --on-brand: #064a3e;
-  --text: #064a3e;
-  --text-muted: #4c7a72;
-  --border: #dfe8d9;
-  --surface-elevated: rgba(255, 255, 255, 0.6);
-  --surface-overlay: rgba(0, 0, 0, 0.7);
+  --surface: #f7f7f2;
+  --surface-strong: #0e3d32;
+  --brand: #34c759;
+  --brand-hover: #a7d7b5;
+  --on-brand: #0e3d32;
+  --text: #0e3d32;
+  --text-muted: rgba(14, 61, 50, 0.7);
+  --border: #a7d7b5;
+  --surface-elevated: rgba(247, 247, 242, 0.85);
+  --surface-overlay: rgba(14, 61, 50, 0.85);
 }
 
 @layer base {
