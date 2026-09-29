@@ -153,13 +153,23 @@
   .hover-lift-subtle:hover {
     transform: translateY(-1px);
   }
+  .btn-press:hover {
+    translate: 0 -2px;
+  }
 }
 
 .btn-press {
-  transition: transform 160ms var(--ease-out);
+  transition:
+    transform 160ms var(--ease-out),
+    translate var(--motion-base) var(--ease-out),
+    opacity var(--motion-fast) var(--ease-out);
 }
 .btn-press:active {
   transform: scale(0.97);
+  transition:
+    transform 100ms var(--ease-out),
+    translate var(--motion-base) var(--ease-out),
+    opacity var(--motion-fast) var(--ease-out);
 }
 
 .carousel-edge-mask {
@@ -190,5 +200,8 @@
   }
   .btn-press:active {
     transform: none;
+  }
+  .btn-press:hover {
+    translate: none;
   }
 }
