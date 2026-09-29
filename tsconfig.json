@@ -14,7 +14,7 @@
     "jsx": "react-jsx",
     "incremental": true,
     "noUncheckedIndexedAccess": true,
-    "types": ["@testing-library/jest-dom"],
+    "types": ["@testing-library/jest-dom/vitest", "node"],
     "plugins": [
       {
         "name": "next"
