@@ -38,7 +38,7 @@ export function Hero() {
             </Link>
             <span className="flex items-center gap-2 rounded-full border border-white/50 px-5 py-3 text-xs font-semibold text-white/70">
               Tonton Video{' '}
-              <span className="bg-brand/20 text-brand-hover rounded-full px-2 py-0.5 text-[10px]">
+              <span className="bg-brand/20 text-brand-hover rounded-full px-2 py-0.5 text-xs">
                 Segera
               </span>
             </span>

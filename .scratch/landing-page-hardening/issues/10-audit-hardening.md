@@ -46,9 +46,10 @@ Baseline dibandingkan: `e4b0cb4`.
 
 ### Masih terbuka — perlu keputusan atau pengerjaan terpisah
 
-- [ ] **Teks di bawah lantai 12px** (spec "Ukuran teks minimum"):
-      `Header.tsx:27` dan `Header.tsx:44` (`text-[11px]`),
-      `Hero.tsx:41` (`text-[10px]`). Milik tiket 07. `.eyebrow` sudah 12px.
+- [x] **Teks di bawah lantai 12px** (spec "Ukuran teks minimum") sudah
+      naik ke `text-xs`: nav dan badge header dari 11px, badge "Segera"
+      di hero dari 10px. `.eyebrow` sebelumnya juga sudah 12px. Tidak ada
+      lagi `text-[Npx]` di `components/` maupun `app/`.
 - [ ] **`images.unoptimized: true` di `next.config.mjs`** — gambar tidak
       dikompresi Next. Milik tiket 06; sengaja tidak disentuh.
 - [ ] **Section FAQ belum pernah dibangun** — nav sudah dibersihkan di
