@@ -32,13 +32,16 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="#fitur"
-              className="bg-brand-hover text-on-brand rounded-full px-6 py-3 text-xs font-semibold"
+              className="btn-press bg-brand-hover text-on-brand rounded-full px-6 py-3 text-xs font-semibold"
             >
               Mulai Perjalanan
             </Link>
-            <button className="flex items-center gap-2 rounded-full border border-white/50 px-5 py-3 text-xs font-semibold">
-              Tonton Video
-            </button>
+            <span className="flex items-center gap-2 rounded-full border border-white/50 px-5 py-3 text-xs font-semibold text-white/70">
+              Tonton Video{' '}
+              <span className="bg-brand/20 text-brand-hover rounded-full px-2 py-0.5 text-[10px]">
+                Segera
+              </span>
+            </span>
           </div>
           <div className="mt-8 flex gap-2 text-[10px] font-medium">
             <span className="rounded-md bg-black px-3 py-2 text-white">▶ Google Play</span>

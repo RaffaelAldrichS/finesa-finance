@@ -55,6 +55,6 @@ Buat testimonial carousel berfungsi. Labeli testimonial sebagai "Contoh".
 - Opsi: `components/TestimonialCarousel.tsx` sebagai client component,
   dipanggil dari `components/sections/Testimonials.tsx`.
 - CSS transition untuk carousel: `transform: translateX(-${index * 100}%)`
-  dengan `transition: transform 0.3s ease`.
+  dengan `transition: transform 200ms var(--ease-out)`.
 - Untuk "Contoh": bisa pakai `<span class="text-[10px] text-text-muted">(Contoh)</span>`
   atau badge yang lebih prominent.

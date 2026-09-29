@@ -17,7 +17,7 @@ export function Topics() {
           </p>
           <Link
             href="#mulai"
-            className="bg-brand mt-7 inline-block rounded-full px-5 py-3 text-xs font-semibold text-white"
+            className="btn-press bg-brand mt-7 inline-block rounded-full px-5 py-3 text-xs font-semibold text-white"
           >
             Lihat Semua Materi <ArrowRight className="ml-1 inline size-3" />
           </Link>

@@ -15,7 +15,7 @@ export function Features() {
           </p>
           <Link
             href="#materi"
-            className="bg-brand mt-7 inline-block rounded-full px-5 py-3 text-xs font-semibold text-white"
+            className="btn-press bg-brand mt-7 inline-block rounded-full px-5 py-3 text-xs font-semibold text-white"
           >
             Jelajahi Semua Fitur <ArrowRight className="ml-1 inline size-3" />
           </Link>

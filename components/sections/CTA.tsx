@@ -28,7 +28,7 @@ export function CTA() {
             <span className="rounded-md bg-black px-3 py-2">● App Store</span>
           </div>
         </div>
-        <div className="flex size-32 items-center justify-center rounded-xl bg-white p-3 text-center text-xs font-bold text-[--on-brand] shadow-2xl">
+        <div className="text-on-brand flex size-32 items-center justify-center rounded-xl bg-white p-3 text-center text-xs font-bold shadow-2xl">
           SCAN
           <br />
           QR CODE
