@@ -7,6 +7,7 @@ import { testimonials } from '@/lib/content'
 const COUNT = testimonials.length
 const RESUME_MS = 6000
 const AUTOPLAY_MS = 6000
+const SNAP_MS = 650
 
 const first = testimonials[0]
 const last = testimonials[COUNT - 1]
@@ -19,6 +20,8 @@ const slides = [
 
 export function Testimonials() {
   const [index, setIndex] = useState(0)
+  const [pos, setPos] = useState(1)
+  const [animate, setAnimate] = useState(true)
   const [step, setStep] = useState(0)
   const [offset, setOffset] = useState(0)
   const [hovered, setHovered] = useState(false)
@@ -30,6 +33,11 @@ export function Testimonials() {
   const trackRef = useRef<HTMLDivElement>(null)
   const firstCardRef = useRef<HTMLElement>(null)
   const manualTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const indexRef = useRef(0)
+  const posRef = useRef(1)
+  const busyRef = useRef(false)
+  const snapRef = useRef<{ pos: number } | null>(null)
+  const safetyTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const paused = hovered || focused || manual || reduced
 
@@ -60,23 +68,76 @@ export function Testimonials() {
   }, [])
 
   useEffect(() => {
-    if (paused) return
-    const timer = setInterval(() => setIndex((current) => (current + 1) % COUNT), AUTOPLAY_MS)
-    return () => clearInterval(timer)
-  }, [paused])
-
-  useEffect(() => {
     return () => {
       if (manualTimer.current) clearTimeout(manualTimer.current)
+      if (safetyTimer.current) clearTimeout(safetyTimer.current)
     }
   }, [])
 
-  const goTo = useCallback((next: number) => {
-    setIndex(((next % COUNT) + COUNT) % COUNT)
-    setManual(true)
-    if (manualTimer.current) clearTimeout(manualTimer.current)
-    manualTimer.current = setTimeout(() => setManual(false), RESUME_MS)
+  const settle = useCallback((nextPos: number) => {
+    if (safetyTimer.current) {
+      clearTimeout(safetyTimer.current)
+      safetyTimer.current = null
+    }
+    snapRef.current = null
+    busyRef.current = false
+    posRef.current = nextPos
+    setPos(nextPos)
+    setAnimate(false)
   }, [])
+
+  const move = useCallback(
+    (rawTarget: number, byUser: boolean) => {
+      if (busyRef.current) return
+      const from = indexRef.current
+      const to = ((rawTarget % COUNT) + COUNT) % COUNT
+      if (to === from) return
+
+      if (byUser) {
+        setManual(true)
+        if (manualTimer.current) clearTimeout(manualTimer.current)
+        manualTimer.current = setTimeout(() => setManual(false), RESUME_MS)
+      }
+
+      const crossingNext = from === COUNT - 1 && to === 0
+      const crossingPrev = from === 0 && to === COUNT - 1
+      const destination = to + 1
+
+      indexRef.current = to
+      setIndex(to)
+      setAnimate(true)
+
+      if (crossingNext || crossingPrev) {
+        const clone = crossingNext ? COUNT + 1 : 0
+        const landed = crossingNext ? 1 : COUNT
+        busyRef.current = true
+        snapRef.current = { pos: landed }
+        posRef.current = clone
+        setPos(clone)
+        safetyTimer.current = setTimeout(() => settle(landed), SNAP_MS)
+        return
+      }
+
+      posRef.current = destination
+      setPos(destination)
+    },
+    [settle],
+  )
+
+  const goTo = useCallback((next: number) => move(next, true), [move])
+
+  const handleTrackEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget) return
+    if (event.propertyName !== 'transform') return
+    if (!snapRef.current) return
+    settle(snapRef.current.pos)
+  }
+
+  useEffect(() => {
+    if (paused) return
+    const timer = setInterval(() => move(indexRef.current + 1, false), AUTOPLAY_MS)
+    return () => clearInterval(timer)
+  }, [paused, move])
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'ArrowLeft') {
@@ -122,19 +183,20 @@ export function Testimonials() {
         >
           <div
             ref={trackRef}
+            onTransitionEnd={handleTrackEnd}
             className="flex w-full items-stretch gap-4 sm:gap-6"
             style={{
-              transform: `translate3d(${offset - (index + 1) * step}px, 0, 0)`,
-              transition: 'transform 600ms var(--ease-out)',
+              transform: `translate3d(${offset - pos * step}px, 0, 0)`,
+              transition: animate ? 'transform 600ms var(--ease-out)' : 'none',
             }}
           >
             {slides.map((slide, slideIndex) => (
               <figure
                 key={slide.key}
-                ref={slideIndex === 0 ? firstCardRef : undefined}
-                aria-hidden={slideIndex !== index + 1}
+                ref={slideIndex === 1 ? firstCardRef : undefined}
+                aria-hidden={slideIndex !== pos}
                 className={`border-border bg-surface-elevated w-[86%] shrink-0 rounded-2xl border p-5 shadow-[0_8px_25px_rgba(24,88,68,.06)] transition-opacity duration-500 sm:w-[62%] sm:p-7 lg:w-[48%] ${
-                  slideIndex === index + 1 ? 'opacity-100' : 'opacity-70'
+                  slideIndex === pos ? 'opacity-100' : 'opacity-70'
                 }`}
               >
                 <blockquote>

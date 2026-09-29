@@ -69,6 +69,33 @@ Buat testimonial carousel berfungsi. Labeli testimonial sebagai "Contoh".
   halaman (eyebrow 2.8:1, tombol `bg-brand text-white` 3.1:1) → lihat
   `09-brand-ink.md`.
 
+## Catatan fix wrap (2026-09-29)
+
+Clone head/tail dirender, tapi kode tidak pernah menujunya: posisi track
+selalu `index + 1` sehingga jatuh di rentang `1..COUNT`. Akibatnya autoplay
+`(i + 1) % COUNT` di ujung dan prev di `index 0` lompat **2 slide mundur**
+(jarak `2 * step`), bukan 1 maju — arah terlihat berlawanan.
+
+Diperbaiki dengan memisahkan `pos` (posisi render, `0..COUNT+1`) dari
+`index` (logis, `0..COUNT-1`):
+
+- Lintas batas berikutnya (`COUNT-1 → 0`) → animasi ke clone tail di posisi
+  `COUNT + 1`, lalu snap tanpa transition ke posisi `1`.
+- Lintas batas sebelumnya (`0 → COUNT-1`) → animasi ke clone head di
+  posisi `0`, lalu snap ke posisi `COUNT`.
+- Semua langkah lain → langsung ke `index + 1`.
+
+Snap dipicu `transitionend` pada track (dicek `propertyName === 'transform'`
+dan `event.target === currentTarget`, karena figure juga membawa transisi
+opacity yang ikut membuble), dengan fallback `setTimeout` 650 ms kalau
+`transitionend` tak pernah datang (mis. `step` masih 0 saat resize). Ref
+`busyRef` menahan input selama animasi wrap.
+
+Keputusan awal **clamp + tombol disabled di ujung** dibatalkan: asumsinya
+diambil dari versi file sebelumnya (107 baris, dots berupa `<span>`). Dengan
+clone yang berfungsi, autoplay tetap infinite dan jarak selalu 1 slide —
+AC "wrap around" di atas jadi benar-benar terpenuhi.
+
 ## Notes
 
 - Carousel ini client component — harus diisolasi dari Server Component page.
