@@ -80,7 +80,7 @@ export function Features() {
                 <div className="text-brand flex size-12 items-center justify-center rounded-2xl bg-[#A7D7B5]/20 transition-transform duration-300 group-hover:scale-110">
                   <feature.icon className="size-6" strokeWidth={2} />
                 </div>
-                <span className="text-[10px] font-bold tracking-widest text-[#A7D7B5] uppercase">
+                <span className="text-xs font-bold tracking-widest text-[#A7D7B5] uppercase">
                   {feature.concept}
                 </span>
               </div>

@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Outfit } from 'next/font/google'
+import { Cursor } from '@/components/Cursor'
 import './globals.css'
 
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
@@ -50,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={`${outfit.variable} antialiased`}>
+        <Cursor />
         <a
           href="#konten"
           className="focus:bg-brand sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"

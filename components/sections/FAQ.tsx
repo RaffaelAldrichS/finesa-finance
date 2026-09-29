@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { Accordion } from '@base-ui/react/accordion'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 
 const faqs = [
@@ -111,7 +112,17 @@ export function FAQ() {
           </p>
         </div>
 
-        <Accordion.Root className="flex w-full flex-col gap-4" defaultValue={[faqs[0]?.id || '']}>
+        <Accordion.Root
+          className="flex w-full flex-col gap-4"
+          defaultValue={[faqs[0]?.id || '']}
+          onValueChange={() => {
+            setTimeout(() => {
+              if (typeof window !== 'undefined' && ScrollTrigger) {
+                ScrollTrigger.refresh(true)
+              }
+            }, 350)
+          }}
+        >
           {faqs.map((faq) => (
             <Accordion.Item
               key={faq.id}

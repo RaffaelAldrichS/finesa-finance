@@ -64,7 +64,7 @@ export function Journey() {
     <section
       id="perjalanan"
       ref={containerRef}
-      className="bg-surface-strong relative z-20 scroll-mt-24 overflow-hidden rounded-t-[40px] text-white md:rounded-t-[80px] lg:rounded-t-[100px]"
+      className="bg-surface-strong relative z-20 scroll-mt-24 overflow-hidden rounded-[40px] text-white md:rounded-[80px] lg:rounded-[100px]"
     >
       <div className="relative mx-auto w-full max-w-[1717px]">
         {/* Artwork - source of truth for the journey progression */}

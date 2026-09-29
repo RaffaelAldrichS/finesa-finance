@@ -66,7 +66,7 @@ export function Hero() {
           fill
           sizes="100vw"
           priority
-          className="object-cover object-[75%_top] md:object-[90%_top] lg:object-[80%_center] xl:object-right"
+          className="object-cover object-[70%_center] sm:object-[80%_center] lg:object-[85%_center] xl:object-right"
         />
         <div className="from-surface-strong/90 via-surface-strong/40 md:from-surface-strong/95 md:via-surface-strong/50 absolute inset-0 bg-gradient-to-t to-transparent md:bg-gradient-to-r md:to-transparent" />
       </div>

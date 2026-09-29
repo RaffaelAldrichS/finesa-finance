@@ -56,7 +56,7 @@ export function Showcase() {
   return (
     <section
       ref={containerRef}
-      className="bg-surface-strong relative z-10 overflow-hidden rounded-b-[40px] text-white md:rounded-b-[80px] lg:rounded-b-[100px]"
+      className="bg-surface-strong relative z-10 overflow-hidden rounded-[40px] text-white md:rounded-[80px] lg:rounded-[100px]"
     >
       <div className="relative mx-auto flex w-full max-w-[1672px] flex-col-reverse md:block">
         {/* Text Content in the negative space (flowed below on mobile, absolute on desktop) */}

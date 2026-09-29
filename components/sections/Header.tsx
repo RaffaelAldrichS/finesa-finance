@@ -25,7 +25,9 @@ export function Header() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.id
-            const matchedItem = navItems.find((item) => item.toLowerCase().replace(' ', '-') === id)
+            const matchedItem = navItems.find(
+              (item) => item.toLowerCase().replace(/\s+/g, '-') === id,
+            )
             if (matchedItem) {
               setActiveSection(matchedItem)
             }
@@ -36,7 +38,7 @@ export function Header() {
     )
 
     navItems.forEach((item) => {
-      const el = document.getElementById(item.toLowerCase().replace(' ', '-'))
+      const el = document.getElementById(item.toLowerCase().replace(/\s+/g, '-'))
       if (el) observer.observe(el)
     })
 
@@ -45,13 +47,15 @@ export function Header() {
 
   return (
     <header
-      className={`pointer-events-none fixed inset-x-0 top-6 z-50 flex justify-center transition-all duration-300`}
+      className={`pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center transition-all duration-500 ease-out ${
+        isScrolled ? 'pt-6' : 'pt-8'
+      }`}
     >
       <div
-        className={`pointer-events-auto flex items-center justify-between rounded-full px-6 py-3 transition-all duration-300 ${
+        className={`pointer-events-auto flex items-center justify-between rounded-full transition-all duration-500 ease-out ${
           isScrolled
-            ? 'w-[90%] max-w-4xl border border-[#A7D7B5]/30 bg-[#0E3D32]/85 shadow-lg backdrop-blur-md'
-            : 'w-[90%] max-w-4xl border border-white/10 bg-[#0E3D32]/60 backdrop-blur-sm'
+            ? 'w-[85%] max-w-4xl border border-[#A7D7B5]/20 bg-[#0E3D32]/90 px-6 py-3 shadow-lg backdrop-blur-md'
+            : 'w-[95%] max-w-6xl border border-transparent bg-[#0E3D32]/10 px-8 py-5 shadow-none backdrop-blur-none'
         }`}
       >
         <Link
@@ -74,11 +78,11 @@ export function Header() {
             return (
               <Link
                 key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className={`relative rounded-full px-4 py-2 text-xs font-medium transition-all ${
+                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                className={`relative rounded-full px-4 py-2 text-xs transition-all duration-300 ${
                   isActive
-                    ? 'bg-[#A7D7B5]/20 text-white'
-                    : 'text-white/70 hover:bg-white/5 hover:text-white'
+                    ? 'bg-[#A7D7B5]/15 font-semibold text-[#A7D7B5]'
+                    : 'font-medium text-white/70 hover:bg-white/10 hover:text-white'
                 }`}
               >
                 {item}
@@ -112,7 +116,7 @@ export function Header() {
                     return (
                       <Dialog.Close
                         key={item}
-                        render={<Link href={`#${item.toLowerCase().replace(' ', '-')}`} />}
+                        render={<Link href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} />}
                         nativeButton={false}
                         className={
                           isActive
