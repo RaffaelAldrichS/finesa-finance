@@ -57,11 +57,12 @@ Baseline dibandingkan: `e4b0cb4`.
 - [ ] **"Lihat Preview Aplikasi" di `Showcase.tsx:43`** masih menjanjikan
       preview yang tidak ada. Milik tiket 05 (AC baris 21) — butuh
       keputusan copywriting.
-- [ ] **Drag carousel belum diuji di perangkat sentuh.** Logika sudah
-      lengkap (pointer capture, rubber-band, threshold 28% / 0,35 px per ms,
-      cancel saat scroll), tapi gestur sentuh tidak bisa dianggap lulus
-      dari unit test dan lint saja. Butuh uji manual di HP atau emulasi
-      Playwright dengan `hasTouch`.
+- [x] **Gestur sentuh carousel sudah diuji lewat emulasi touch.** Bukan
+      `page.mouse` (yang menghasilkan `pointerType: 'mouse'` dan sengaja
+      diabaikan), tapi `Input.dispatchTouchEvent` lewat CDP pada konteks
+      ber-`hasTouch`: gesek ke kiri memindah dari contoh 1 ke 2 dan
+      sr-only status ikut berubah, gesek ke kanan memindah kembali.
+      **Sisa:** belum disentuh jari sungguhan di HP fisik.
 - [ ] **Sticky header, scrollspy, back-to-top** — di luar scope sesi ini.
       Tentukan dulu apakah memang diinginkan sebelum dikerjakan.
 
@@ -71,8 +72,11 @@ Baseline dibandingkan: `e4b0cb4`.
 - [x] `pnpm typecheck` passing (setiap slice)
 - [x] `pnpm test` passing (setiap slice)
 - [x] `pnpm build` passing (akhir slice 3, 6, 9, 10)
-- [ ] Banding screenshot desktop + mobile dengan baseline `e4b0cb4`
-- [ ] Audit kontras otomatis di browser (hitung fg/bg tiap node teks)
+- [x] Banding screenshot desktop + mobile dengan baseline `e4b0cb4` —
+      tiap section difoto satu per satu (lihat catatan jebakan di bawah)
+- [x] Audit kontras otomatis di browser — **0 node di bawah AA** di
+      1440x900 dan di Pixel 7, setelah dua putaran perbaikan (lihat
+      `851dfd4`)
 
 ## Notes
 
@@ -80,3 +84,45 @@ Baseline dibandingkan: `e4b0cb4`.
   karena ada di commit; ambil lewat `git show e4b0cb4:.scratch/shots/desk.png`.
 - Jangan `git add -A` — `PRODUCT.md` di root milik pihak lain dan bukan
   bagian dari kerjaan ini.
+
+## Hasil audit kontras (2026-09-29)
+
+Metodenya: jalankan build produksi, untuk tiap section scroll ke posisi
+section, suntik `color: transparent` ke seluruh halaman, foto viewport,
+lalu sampel piksel yang benar-benar tercat di belakang tiap node teks.
+Warna depan diambil dari `getComputedStyle` lalu dikompositkan (handle
+`color-mix`/`oklab` yang dipakai Tailwind v4 untuk `/70` dan `/85`).
+Lima titik per node, yang terburuk dipakai — konservatif untuk teks di
+atas gambar.
+
+| Putaran           | Desktop            | Mobile             |
+| ----------------- | ------------------ | ------------------ |
+| Sebelum `851dfd4` | 3 node di bawah AA | 7 node di bawah AA |
+| Sesudah           | 0                  | 0                  |
+
+Yang ditemukan dan diperbaiki:
+
+- **Scrim tidak menutup teks di mobile** (paling serius). `from-black/85
+via-black/70 to-transparent` mendatar, jadi cocok untuk grid desktop
+  tetapi di layout bertumpuk ekornya tembus. Badge "Segera" 1,66:1,
+  heading Showcase 2,84:1, heading Journey 2,94:1.
+- **Overlay CTA** hanya 70 persen di atas gambar yang sudah 55 persen —
+  eyebrow 3,79:1 di desktop.
+- **Pill status CTA** hijau di atas hijau tidak akan pernah mencapai
+  4,5:1; tint-nya diganti hitam.
+- **Glif bintang kartu fitur** (`feature.icon` bisa berupa string, jadi
+  teks 16px, bukan ikon) 4,15:1.
+
+### Jebakan alat
+
+- **Screenshot `fullPage: true` tidak bisa dipercaya untuk halaman ini.**
+  Chromium merender di luar viewport dan GSAP/ScrollTrigger tidak
+  ikut menghitung ulang, jadi Topics dan Testimonials tampak kosong
+  padahal di browser nyata semua 7 section punya 0 node teks tersembunyi.
+  Selalu foto per section lewat viewport biasa.
+- **`next start` menyajikan build lama** sampai prosesnya dibunuh
+  (`taskkill //F //PID` dari `netstat -ano`). Audit sempat "mengukur"
+  kode yang sudah diperbaiki.
+- **`aria-current={cond}` tanpa value** merender `aria-current="false"`
+  pada elemen yang tidak aktif, jadi tidak boleh difilter dengan
+  `!== null`.
