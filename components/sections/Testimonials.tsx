@@ -166,7 +166,6 @@ export function Testimonials() {
           role="region"
           aria-roledescription="carousel"
           aria-label="Contoh pengalaman pengguna"
-          aria-live="polite"
           tabIndex={0}
           onKeyDown={handleKeyDown}
           onMouseEnter={() => setHovered(true)}
@@ -195,6 +194,7 @@ export function Testimonials() {
                 key={slide.key}
                 ref={slideIndex === 1 ? firstCardRef : undefined}
                 aria-hidden={slideIndex !== pos}
+                inert={slideIndex !== pos}
                 className={`border-border bg-surface-elevated w-[86%] shrink-0 rounded-2xl border p-5 shadow-[0_8px_25px_rgba(24,88,68,.06)] transition-opacity duration-500 sm:w-[62%] sm:p-7 lg:w-[48%] ${
                   slideIndex === pos ? 'opacity-100' : 'opacity-70'
                 }`}

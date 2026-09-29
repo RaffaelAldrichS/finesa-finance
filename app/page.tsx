@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <div className="bg-surface text-text min-h-screen overflow-hidden">
       <Header />
-      <main>
+      <main id="konten">
         <Reveal>
           <Hero />
           <Features />
