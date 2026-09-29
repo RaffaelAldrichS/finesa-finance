@@ -75,7 +75,7 @@ export function Header() {
                     nativeButton={false}
                     className={
                       i === 0
-                        ? 'bg-brand/10 text-brand rounded-xl px-4 py-3 text-sm font-semibold'
+                        ? 'bg-brand/10 text-text rounded-xl px-4 py-3 text-sm font-semibold'
                         : 'text-text hover:bg-brand/10 rounded-xl px-4 py-3 text-sm font-medium'
                     }
                   >
