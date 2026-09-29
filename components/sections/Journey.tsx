@@ -84,7 +84,7 @@ export function Journey() {
 
         {/* Text overlaid on the artwork */}
         <div className="journey-text absolute inset-0 z-20 flex flex-col justify-end p-8 md:max-w-[500px] md:justify-center md:px-16 lg:max-w-[600px] lg:px-24">
-          <p className="eyebrow font-bold tracking-widest text-[#A7D7B5] uppercase drop-shadow-md">
+          <p className="eyebrow text-brand-light font-bold tracking-widest uppercase drop-shadow-md">
             Perjalanan Finansialmu
           </p>
           <h2 className="mt-4 text-3xl leading-[1.1] font-bold tracking-tight drop-shadow-md md:text-4xl lg:text-5xl">

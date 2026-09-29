@@ -74,13 +74,13 @@ export function Features() {
           {features.map((feature, i) => (
             <div
               key={feature.title}
-              className="feature-card group border-border/50 bg-surface relative flex flex-col rounded-[2rem] border p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#A7D7B5] hover:bg-white hover:shadow-md"
+              className="feature-card group border-border/50 bg-surface hover:border-brand-light relative flex flex-col rounded-[2rem] border p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-md"
             >
               <div className="mb-6 flex items-center justify-between">
-                <div className="text-brand flex size-12 items-center justify-center rounded-2xl bg-[#A7D7B5]/20 transition-transform duration-300 group-hover:scale-110">
-                  <feature.icon className="size-6" strokeWidth={2} />
+                <div className="text-brand bg-brand-light/20 flex size-12 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110">
+                  <feature.icon aria-hidden="true" className="size-6" strokeWidth={2} />
                 </div>
-                <span className="text-xs font-bold tracking-widest text-[#A7D7B5] uppercase">
+                <span className="text-brand-light text-xs font-bold tracking-widest uppercase">
                   {feature.concept}
                 </span>
               </div>
@@ -92,7 +92,7 @@ export function Features() {
               {/* Visual connector for desktop */}
               {i < features.length - 1 && (
                 <div className="absolute top-1/2 right-0 hidden translate-x-1/2 -translate-y-1/2 lg:block">
-                  <ArrowRight className="text-border/50 size-5" />
+                  <ArrowRight aria-hidden="true" className="text-border/50 size-5" />
                 </div>
               )}
             </div>
@@ -104,7 +104,7 @@ export function Features() {
             href="#materi"
             className="feature-header btn-press bg-brand hover:bg-brand-hover shadow-brand/20 inline-flex items-center rounded-full px-8 py-4 text-sm font-semibold text-white shadow-lg transition-colors"
           >
-            Jelajahi Materi <ArrowRight className="ml-2 size-4" />
+            Jelajahi Materi <ArrowRight aria-hidden="true" className="ml-2 size-4" />
           </Link>
         </div>
       </div>

@@ -54,8 +54,8 @@ export function Header() {
       <div
         className={`pointer-events-auto flex items-center justify-between rounded-full transition-all duration-500 ease-out ${
           isScrolled
-            ? 'w-[85%] max-w-4xl border border-[#A7D7B5]/20 bg-[#0E3D32]/90 px-6 py-3 shadow-lg backdrop-blur-md'
-            : 'w-[95%] max-w-6xl border border-transparent bg-[#0E3D32]/10 px-8 py-5 shadow-none backdrop-blur-none'
+            ? 'border-brand-light/20 bg-surface-strong/90 w-[85%] max-w-4xl border px-6 py-3 shadow-lg backdrop-blur-md'
+            : 'bg-surface-strong/10 w-[95%] max-w-6xl border border-transparent px-8 py-5 shadow-none backdrop-blur-none'
         }`}
       >
         <Link
@@ -81,7 +81,7 @@ export function Header() {
                 href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
                 className={`relative rounded-full px-4 py-2 text-xs transition-all duration-300 ${
                   isActive
-                    ? 'bg-[#A7D7B5]/15 font-semibold text-[#A7D7B5]'
+                    ? 'bg-brand-light/15 text-brand-light font-semibold'
                     : 'font-medium text-white/70 hover:bg-white/10 hover:text-white'
                 }`}
               >
@@ -91,7 +91,7 @@ export function Header() {
           })}
         </nav>
         <div className="flex items-center gap-3">
-          <span className="hidden rounded-full border border-[#A7D7B5]/20 bg-[#A7D7B5]/10 px-3 py-1.5 text-xs font-semibold text-[#A7D7B5] sm:inline-block">
+          <span className="border-brand-light/20 bg-brand-light/10 text-brand-light hidden rounded-full border px-3 py-1.5 text-xs font-semibold sm:inline-block">
             Segera Hadir
           </span>
           <Dialog.Root>
@@ -99,7 +99,7 @@ export function Header() {
               aria-label="Buka menu navigasi"
               className="btn-press p-1 text-white md:hidden"
             >
-              <Menu className="size-5" />
+              <Menu aria-hidden="true" className="size-5" />
             </Dialog.Trigger>
             <Dialog.Portal>
               <Dialog.Backdrop className="nav-sheet-backdrop bg-surface-overlay fixed inset-0 z-40" />
@@ -107,7 +107,7 @@ export function Header() {
                 <div className="flex items-center justify-between">
                   <Dialog.Title className="text-lg font-semibold">Menu</Dialog.Title>
                   <Dialog.Close aria-label="Tutup menu" className="btn-press p-2">
-                    <X className="size-6" />
+                    <X aria-hidden="true" className="size-6" />
                   </Dialog.Close>
                 </div>
                 <nav aria-label="Navigasi seluler" className="mt-4 flex flex-col gap-1">

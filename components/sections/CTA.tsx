@@ -56,7 +56,7 @@ export function CTA() {
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1000px] flex-col items-center text-center">
-        <p className="cta-reveal eyebrow font-bold tracking-widest text-[#A7D7B5] uppercase drop-shadow-md">
+        <p className="cta-reveal eyebrow text-brand-light font-bold tracking-widest uppercase drop-shadow-md">
           SIAP MELANGKAH?
         </p>
         <h2 className="cta-reveal mt-6 text-4xl font-bold tracking-tight drop-shadow-md sm:text-5xl lg:text-7xl">

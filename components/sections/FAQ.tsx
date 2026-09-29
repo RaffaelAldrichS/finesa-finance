@@ -127,12 +127,15 @@ export function FAQ() {
             <Accordion.Item
               key={faq.id}
               value={faq.id}
-              className="faq-item group border-border/50 overflow-hidden rounded-[20px] border bg-white transition-colors data-[panel-open]:border-[#A7D7B5] data-[panel-open]:shadow-sm"
+              className="faq-item group border-border/50 data-[panel-open]:border-brand-light overflow-hidden rounded-[20px] border bg-white transition-colors data-[panel-open]:shadow-sm"
             >
               <Accordion.Header className="m-0 flex">
                 <Accordion.Trigger className="text-text hover:text-brand focus-visible:ring-brand/50 flex flex-1 cursor-pointer items-center justify-between px-6 py-5 text-left font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none">
                   <span className="text-[15px] md:text-base">{faq.q}</span>
-                  <ChevronDown className="text-text-muted/50 group-data-[panel-open]:text-brand h-5 w-5 shrink-0 transition-transform duration-300 group-data-[panel-open]:rotate-180" />
+                  <ChevronDown
+                    aria-hidden="true"
+                    className="text-text-muted/50 group-data-[panel-open]:text-brand h-5 w-5 shrink-0 transition-transform duration-300 group-data-[panel-open]:rotate-180"
+                  />
                 </Accordion.Trigger>
               </Accordion.Header>
               <Accordion.Panel className="grid grid-rows-[1fr] overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-in-out data-[ending-style]:grid-rows-[0fr] data-[ending-style]:opacity-0 data-[starting-style]:grid-rows-[0fr] data-[starting-style]:opacity-0">

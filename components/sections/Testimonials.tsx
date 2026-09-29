@@ -73,17 +73,23 @@ export function Testimonials() {
           {testimonials.map((testimonial, i) => (
             <figure
               key={testimonial.name}
-              className={`testimonial-card border-border/50 flex w-[85vw] shrink-0 snap-center flex-col rounded-[2.5rem] border bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:border-[#A7D7B5] hover:shadow-md md:w-auto ${i === 1 ? 'md:translate-y-6' : ''}`}
+              className={`testimonial-card border-border/50 hover:border-brand-light flex w-[85vw] shrink-0 snap-center flex-col rounded-[2.5rem] border bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md md:w-auto ${i === 1 ? 'md:translate-y-6' : ''}`}
             >
-              <div className="mb-4 inline-flex items-center self-start rounded-full bg-[#A7D7B5]/20 px-3 py-1">
-                <span className="text-xs font-bold tracking-widest text-[#0E3D32] uppercase">
+              <div className="bg-brand-light/20 mb-4 inline-flex items-center self-start rounded-full px-3 py-1">
+                <span className="text-surface-strong text-xs font-bold tracking-widest uppercase">
                   Contoh Pengguna
                 </span>
               </div>
               <div className="text-brand mb-6 flex gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="size-4 fill-current" strokeWidth={0} />
+                  <Star
+                    aria-hidden="true"
+                    key={i}
+                    className="size-4 fill-current"
+                    strokeWidth={0}
+                  />
                 ))}
+                <span className="sr-only">Penilaian 5 bintang</span>
               </div>
 
               <blockquote className="flex-1">
@@ -93,7 +99,7 @@ export function Testimonials() {
               </blockquote>
 
               <figcaption className="mt-8 flex items-center gap-4">
-                <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[#A7D7B5]/20 text-lg font-bold text-[#0E3D32]">
+                <div className="bg-brand-light/20 text-surface-strong flex size-12 shrink-0 items-center justify-center rounded-2xl text-lg font-bold">
                   {testimonial.name[0]}
                 </div>
                 <div>

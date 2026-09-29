@@ -4,7 +4,12 @@ import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const heroImage = '/assets/hero.webp'
 
@@ -33,7 +38,19 @@ export function Hero() {
         const bgX = gsap.quickTo('.hero-bg', 'x', { duration: 0.5, ease: 'power3.out' })
         const bgY = gsap.quickTo('.hero-bg', 'y', { duration: 0.5, ease: 'power3.out' })
 
+        let isVisible = true
+        const scrollTrigger = ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          onToggle: (self) => {
+            isVisible = self.isActive
+          },
+        })
+
         const handleMouseMove = (e: MouseEvent) => {
+          if (!isVisible) return
+
           // Desktop only
           if (window.innerWidth >= 1024) {
             const x = (e.clientX / window.innerWidth - 0.5) * 10
@@ -44,8 +61,11 @@ export function Hero() {
           }
         }
 
-        window.addEventListener('mousemove', handleMouseMove)
-        return () => window.removeEventListener('mousemove', handleMouseMove)
+        window.addEventListener('mousemove', handleMouseMove, { passive: true })
+        return () => {
+          window.removeEventListener('mousemove', handleMouseMove)
+          scrollTrigger.kill()
+        }
       })
 
       return () => mm.revert()
@@ -78,7 +98,7 @@ export function Hero() {
             <br />
             Jadi Lebih Seru,
             <br />
-            <span className="text-[#A7D7B5] drop-shadow-sm">Lebih Bermakna</span>
+            <span className="text-brand-light drop-shadow-sm">Lebih Bermakna</span>
           </h1>
           <p className="hero-stagger mt-6 max-w-[460px] text-[15px] leading-relaxed font-medium text-white/90 md:text-base">
             Finesa adalah platform edukasi finansial berbasis gamifikasi yang membantu kamu
@@ -102,8 +122,8 @@ export function Hero() {
           <div className="hero-stagger mt-10 flex items-center gap-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-xs font-medium text-white backdrop-blur-md">
               <span className="relative flex size-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#A7D7B5] opacity-75"></span>
-                <span className="relative inline-flex size-2 rounded-full bg-[#A7D7B5]"></span>
+                <span className="bg-brand-light absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+                <span className="bg-brand-light relative inline-flex size-2 rounded-full"></span>
               </span>
               Segera Hadir di Play Store &amp; App Store
             </span>

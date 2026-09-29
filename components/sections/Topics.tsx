@@ -77,7 +77,7 @@ export function Topics() {
               href="#mulai"
               className="btn-press bg-brand hover:bg-brand-hover shadow-brand/20 inline-flex items-center rounded-full px-8 py-4 text-sm font-semibold text-white shadow-lg transition-colors"
             >
-              Lihat Semua Materi <ArrowRight className="ml-2 size-4" />
+              Lihat Semua Materi <ArrowRight aria-hidden="true" className="ml-2 size-4" />
             </Link>
           </div>
         </div>
@@ -86,15 +86,18 @@ export function Topics() {
           {topics.map((topic, i) => (
             <div
               key={topic.title}
-              className={`topic-card group border-border/50 rounded-[2.5rem] border p-10 transition-all duration-300 hover:-translate-y-1 hover:border-[#A7D7B5] hover:shadow-xl ${i === 0 || i === 3 ? 'bg-[#A7D7B5]/10' : 'bg-white'}`}
+              className={`topic-card group border-border/50 hover:border-brand-light rounded-[2.5rem] border p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${i === 0 || i === 3 ? 'bg-brand-light/10' : 'bg-white'}`}
             >
               <div className="flex items-start justify-between">
                 <span
-                  className={`flex size-14 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 ${i === 0 || i === 3 ? 'text-brand bg-[#A7D7B5]/20' : 'bg-surface text-brand shadow-sm'}`}
+                  className={`flex size-14 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 ${i === 0 || i === 3 ? 'text-surface-strong bg-brand-light/20' : 'bg-surface text-surface-strong shadow-sm'}`}
                 >
-                  <topic.icon className="h-7 w-7" strokeWidth={1.5} />
+                  <topic.icon aria-hidden="true" className="h-7 w-7" strokeWidth={1.5} />
                 </span>
-                <ArrowRight className="text-text-muted/30 group-hover:text-brand size-5 transition-all duration-300 group-hover:translate-x-1" />
+                <ArrowRight
+                  aria-hidden="true"
+                  className="text-text-muted/30 group-hover:text-surface-strong size-5 transition-all duration-300 group-hover:translate-x-1"
+                />
               </div>
               <h3 className="text-text mt-10 text-xl font-bold">{topic.title}</h3>
               <p className="text-text-muted mt-4 text-[14px] leading-relaxed">{topic.text}</p>
@@ -107,7 +110,7 @@ export function Topics() {
             href="#mulai"
             className="btn-press bg-brand hover:bg-brand-hover shadow-brand/20 flex w-full items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white shadow-lg transition-colors"
           >
-            Lihat Semua Materi <ArrowRight className="ml-2 size-4" />
+            Lihat Semua Materi <ArrowRight aria-hidden="true" className="ml-2 size-4" />
           </Link>
         </div>
       </div>

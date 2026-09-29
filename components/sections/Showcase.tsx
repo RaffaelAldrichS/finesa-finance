@@ -61,7 +61,7 @@ export function Showcase() {
       <div className="relative mx-auto flex w-full max-w-[1672px] flex-col-reverse md:block">
         {/* Text Content in the negative space (flowed below on mobile, absolute on desktop) */}
         <div className="showcase-content relative z-20 px-6 py-16 md:absolute md:inset-y-0 md:left-0 md:flex md:w-[50%] md:flex-col md:justify-center md:p-12 lg:pl-24">
-          <p className="eyebrow font-bold tracking-widest text-[#A7D7B5] uppercase drop-shadow-md">
+          <p className="eyebrow text-brand-light font-bold tracking-widest uppercase drop-shadow-md">
             Masa Depan Finesa
           </p>
           <h2 className="section-title mt-6 max-w-[480px] text-3xl leading-tight font-bold tracking-tight drop-shadow-md md:text-4xl lg:text-5xl">
@@ -74,8 +74,12 @@ export function Showcase() {
           <ul className="mt-8 flex flex-col gap-4 text-sm text-white/90 drop-shadow-md md:text-[15px]">
             {journeyFeatures.map((item) => (
               <li key={item} className="flex items-center gap-4">
-                <div className="flex size-6 shrink-0 items-center justify-center rounded-full border border-[#A7D7B5]/30 bg-[#A7D7B5]/20 backdrop-blur-sm md:size-7">
-                  <Check className="size-3 text-[#A7D7B5] md:size-3.5" strokeWidth={3} />
+                <div className="border-brand-light/30 bg-brand-light/20 flex size-6 shrink-0 items-center justify-center rounded-full border backdrop-blur-sm md:size-7">
+                  <Check
+                    aria-hidden="true"
+                    className="text-brand-light size-3 md:size-3.5"
+                    strokeWidth={3}
+                  />
                 </div>
                 <span className="font-medium tracking-wide">{item}</span>
               </li>

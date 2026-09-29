@@ -10,6 +10,7 @@ const logoImg = '/assets/logo-finesa.webp'
 export function Intro() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [shouldShow, setShouldShow] = useState(false)
+  const [isFinished, setIsFinished] = useState(false)
 
   useEffect(() => {
     // Show only once per session
@@ -22,14 +23,14 @@ export function Intro() {
 
   useGSAP(
     () => {
-      if (!shouldShow) return
+      if (!shouldShow || isFinished) return
 
       const mm = gsap.matchMedia()
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {
         const tl = gsap.timeline({
           onComplete: () => {
-            gsap.set(containerRef.current, { display: 'none' })
+            setIsFinished(true)
           },
         })
 
@@ -65,20 +66,20 @@ export function Intro() {
       })
 
       mm.add('(prefers-reduced-motion: reduce)', () => {
-        gsap.set(containerRef.current, { display: 'none' })
+        setIsFinished(true)
       })
 
       return () => mm.revert()
     },
-    { scope: containerRef, dependencies: [shouldShow] },
+    { scope: containerRef, dependencies: [shouldShow, isFinished] },
   )
 
-  if (!shouldShow) return null
+  if (!shouldShow || isFinished) return null
 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0E3D32]"
+      className="bg-surface-strong fixed inset-0 z-[100] flex flex-col items-center justify-center"
     >
       <div className="relative flex flex-col items-center">
         <div className="intro-logo mb-6 h-12 w-auto">
@@ -93,10 +94,10 @@ export function Intro() {
         </div>
 
         <div className="h-[2px] w-48 overflow-hidden rounded-full bg-white/10">
-          <div className="intro-line h-full w-full bg-[#A7D7B5]" />
+          <div className="intro-line bg-brand-light h-full w-full" />
         </div>
 
-        <p className="intro-text mt-4 text-[12px] font-bold tracking-[0.2em] text-[#A7D7B5]/80 uppercase">
+        <p className="intro-text text-brand-light/80 mt-4 text-[12px] font-bold tracking-[0.2em] uppercase">
           Enter Your Financial Journey
         </p>
       </div>

@@ -107,12 +107,12 @@ export function Cursor() {
     <div ref={containerRef} className="pointer-events-none opacity-0">
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 z-[100] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#34C759]"
+        className="bg-brand fixed top-0 left-0 z-[100] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{ willChange: 'transform' }}
       />
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 z-[99] h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border-[1.5px] border-[#A7D7B5] bg-transparent opacity-40"
+        className="border-brand-light fixed top-0 left-0 z-[99] h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border-[1.5px] bg-transparent opacity-40"
         style={{ willChange: 'transform, width, height, opacity' }}
       />
     </div>
