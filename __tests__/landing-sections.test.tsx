@@ -1,7 +1,11 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeAll, describe, expect, it } from 'vitest'
-import { Testimonials } from '@/components/sections/Testimonials'
+import { CTA } from '@/components/sections/CTA'
+import { Features } from '@/components/sections/Features'
+import { Hero } from '@/components/sections/Hero'
+import { Journey } from '@/components/sections/Journey'
 import { Showcase } from '@/components/sections/Showcase'
+import { Testimonials } from '@/components/sections/Testimonials'
 import { testimonials } from '@/lib/content'
 
 beforeAll(() => {
@@ -72,4 +76,25 @@ describe('Showcase', () => {
     render(<Showcase />)
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('(Rencana)')
   })
+})
+
+describe('sections render without throwing', () => {
+  // next/image validates its props at render time, not at build time, so a
+  // conflicting combination such as `fill` together with a style height
+  // reaches the browser and crashes the section. These assertions render each
+  // section that owns an image so that failure lands in the test run instead.
+  const sections = [
+    ['Hero', <Hero key="hero" />],
+    ['Features', <Features key="features" />],
+    ['Journey', <Journey key="journey" />],
+    ['Showcase', <Showcase key="showcase" />],
+    ['Testimonials', <Testimonials key="testimonials" />],
+    ['CTA', <CTA key="cta" />],
+  ] as const
+
+  for (const [name, element] of sections) {
+    it(`renders ${name}`, () => {
+      expect(() => render(element)).not.toThrow()
+    })
+  }
 })
