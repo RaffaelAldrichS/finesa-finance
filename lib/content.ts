@@ -59,4 +59,4 @@ export const journeyFeatures = [
   'Tersedia di Semua Perangkat',
 ] as const
 
-export const navItems = ['Beranda', 'Fitur', 'Materi', 'Testimoni', 'FAQ'] as const
+export const navItems = ['Beranda', 'Fitur', 'Materi', 'Testimoni'] as const

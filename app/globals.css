@@ -183,6 +183,21 @@
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
+.nav-sheet,
+.nav-sheet-backdrop {
+  transition:
+    transform var(--motion-slow) var(--ease-drawer),
+    opacity var(--motion-base) var(--ease-out);
+}
+.nav-sheet[data-starting-style],
+.nav-sheet[data-ending-style] {
+  transform: translateY(-100%);
+}
+.nav-sheet-backdrop[data-starting-style],
+.nav-sheet-backdrop[data-ending-style] {
+  opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

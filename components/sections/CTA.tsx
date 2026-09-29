@@ -10,7 +10,7 @@ export function CTA() {
     >
       <Image
         src={footerImage}
-        alt="Lembah hijau untuk ajakan mengunduh aplikasi"
+        alt="Lembah hijau latar belakang ajakan Finesa segera hadir"
         fill
         sizes="100vw"
         className="object-cover object-bottom opacity-55"
@@ -19,19 +19,23 @@ export function CTA() {
       <div className="relative mx-auto flex max-w-[1040px] flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
         <div>
           <p className="eyebrow text-brand-hover">SIAP MELANGKAH?</p>
-          <h2 className="mt-3 text-3xl font-semibold">Download Finesa Sekarang!</h2>
+          <h2 className="mt-3 text-3xl font-semibold">Finesa Segera Hadir!</h2>
           <p className="mt-3 max-w-[350px] text-sm text-white/70">
             Jelajahi dunia finansial dengan lebih seru dan bermakna.
           </p>
-          <div className="mt-5 flex gap-2 text-[12px] font-medium">
-            <span className="rounded-md bg-black px-3 py-2">▶ Google Play</span>
-            <span className="rounded-md bg-black px-3 py-2">● App Store</span>
+          <div className="mt-5 flex items-center gap-2 text-xs font-medium">
+            <span className="bg-brand/20 text-brand-hover rounded-full px-4 py-2">
+              Segera Hadir
+            </span>
           </div>
         </div>
-        <div className="text-on-brand flex size-32 items-center justify-center rounded-xl bg-white p-3 text-center text-xs font-bold shadow-2xl">
-          SCAN
-          <br />
-          QR CODE
+        <div className="text-center">
+          <div className="text-on-brand flex size-32 items-center justify-center rounded-xl bg-white p-3 text-center text-xs font-bold shadow-2xl">
+            QR
+            <br />
+            CODE
+          </div>
+          <p className="mt-2 text-xs text-white/70">Ilustrasi</p>
         </div>
       </div>
     </section>

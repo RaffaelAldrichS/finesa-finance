@@ -43,9 +43,10 @@ export function Hero() {
               </span>
             </span>
           </div>
-          <div className="mt-8 flex gap-2 text-[10px] font-medium">
-            <span className="rounded-md bg-black px-3 py-2 text-white">▶ Google Play</span>
-            <span className="rounded-md bg-black px-3 py-2 text-white">● App Store</span>
+          <div className="mt-8 flex items-center gap-2 text-xs font-medium">
+            <span className="bg-brand/20 text-brand-hover rounded-full px-3 py-2">
+              Segera Hadir di Play Store &amp; App Store
+            </span>
           </div>
         </div>
       </div>
