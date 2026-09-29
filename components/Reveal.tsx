@@ -11,18 +11,19 @@ export function Reveal({ children }: { children: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    let removeLoadListener: (() => void) | undefined
+
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia()
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-        const split = new SplitText('.hero-title', { type: 'lines,words' })
+        const split = new SplitText('.hero-title', { type: 'words' })
         gsap.from(split.words, {
           y: 34,
           opacity: 0,
           duration: 0.8,
           stagger: 0.045,
           ease: 'power3.out',
-          delay: 0.15,
         })
         gsap.utils.toArray<HTMLElement>('.reveal').forEach((element) => {
           gsap.from(element, {
@@ -46,12 +47,16 @@ export function Reveal({ children }: { children: React.ReactNode }) {
         })
       })
 
-      document.fonts.ready.then(() => {
-        ScrollTrigger.refresh()
-      })
+      const refresh = () => ScrollTrigger.refresh()
+      document.fonts.ready.then(refresh).catch(() => {})
+      window.addEventListener('load', refresh)
+      removeLoadListener = () => window.removeEventListener('load', refresh)
     }, containerRef)
 
-    return () => ctx.revert()
+    return () => {
+      removeLoadListener?.()
+      ctx.revert()
+    }
   }, [])
 
   return <div ref={containerRef}>{children}</div>
