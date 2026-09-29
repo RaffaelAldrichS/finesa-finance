@@ -36,7 +36,13 @@ export function Reveal({ children }: { children: React.ReactNode }) {
         gsap.to('.journey-art', {
           yPercent: -8,
           ease: 'none',
-          scrollTrigger: { trigger: '.journey', scrub: true },
+          scrollTrigger: {
+            trigger: '.journey',
+            scrub: true,
+            onToggle: (self) => {
+              gsap.set('.journey-art', { willChange: self.isActive ? 'transform' : 'auto' })
+            },
+          },
         })
       })
 
