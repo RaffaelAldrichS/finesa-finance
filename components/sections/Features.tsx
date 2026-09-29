@@ -26,7 +26,7 @@ export function Features() {
               key={feature.title}
               className="border-border bg-surface-elevated rounded-2xl border p-5 shadow-[0_8px_25px_rgba(24,88,68,.06)]"
             >
-              <div className="bg-brand/10 text-brand mb-5 flex size-10 items-center justify-center rounded-full">
+              <div className="bg-brand/10 text-text mb-5 flex size-10 items-center justify-center rounded-full">
                 {typeof feature.icon === 'string' ? (
                   feature.icon
                 ) : (

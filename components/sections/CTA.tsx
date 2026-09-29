@@ -15,7 +15,7 @@ export function CTA() {
         sizes="100vw"
         className="object-cover object-bottom opacity-55"
       />
-      <div className="bg-surface-strong/70 absolute inset-0" />
+      <div className="bg-surface-strong/90 absolute inset-0" />
       <div className="relative mx-auto flex max-w-[1040px] flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
         <div>
           <p className="eyebrow text-brand-hover">SIAP MELANGKAH?</p>
@@ -24,7 +24,7 @@ export function CTA() {
             Jelajahi dunia finansial dengan lebih seru dan bermakna.
           </p>
           <div className="mt-5 flex items-center gap-2 text-xs font-medium">
-            <span className="bg-brand/20 text-brand-hover rounded-full px-4 py-2">
+            <span className="text-brand-hover rounded-full bg-black/30 px-4 py-2">
               Segera Hadir
             </span>
           </div>

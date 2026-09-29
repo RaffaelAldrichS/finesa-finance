@@ -14,7 +14,7 @@ export function Hero() {
         preload
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/60 md:bg-gradient-to-r md:from-black/85 md:via-black/75 md:to-black/20" />
       <div className="relative mx-auto flex min-h-[690px] max-w-[1240px] items-center px-6 pt-16 lg:px-10">
         <div className="max-w-[465px]">
           <h1 className="hero-title text-5xl leading-[1.03] font-semibold tracking-[-0.055em] sm:text-6xl">

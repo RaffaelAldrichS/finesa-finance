@@ -16,7 +16,7 @@ export function Showcase() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/60 md:bg-gradient-to-r md:from-black/85 md:via-black/75 md:to-black/20" />
       <div className="reveal relative mx-auto grid max-w-[1160px] gap-10 lg:grid-cols-2 lg:items-center">
         <div>
           <p className="eyebrow text-brand-hover">LIHAT LANGSUNG</p>
