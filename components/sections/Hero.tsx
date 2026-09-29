@@ -7,10 +7,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-}
-
 const heroImage = '/assets/hero.webp'
 
 export function Hero() {
@@ -18,6 +14,9 @@ export function Hero() {
 
   useGSAP(
     () => {
+      if (typeof window === 'undefined') return
+      gsap.registerPlugin(ScrollTrigger)
+
       const mm = gsap.matchMedia()
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {

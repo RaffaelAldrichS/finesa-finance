@@ -6,10 +6,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-}
-
 const journeyImage = '/assets/gunung.webp'
 
 export function Journey() {
@@ -17,6 +13,9 @@ export function Journey() {
 
   useGSAP(
     () => {
+      if (typeof window === 'undefined') return
+      gsap.registerPlugin(ScrollTrigger)
+
       const mm = gsap.matchMedia()
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {

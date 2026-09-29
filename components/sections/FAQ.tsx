@@ -55,6 +55,9 @@ export function FAQ() {
 
   useGSAP(
     () => {
+      if (typeof window === 'undefined') return
+      gsap.registerPlugin(ScrollTrigger)
+
       const mm = gsap.matchMedia()
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {

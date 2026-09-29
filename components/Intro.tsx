@@ -11,6 +11,7 @@ export function Intro() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [shouldShow, setShouldShow] = useState(false)
   const [isFinished, setIsFinished] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     // Show only once per session
@@ -19,6 +20,8 @@ export function Intro() {
       setTimeout(() => setShouldShow(true), 0)
       sessionStorage.setItem('finesa_intro_seen', 'true')
     }
+    // Use setTimeout to avoid synchronous setState in effect
+    setTimeout(() => setMounted(true), 0)
   }, [])
 
   useGSAP(
@@ -74,7 +77,7 @@ export function Intro() {
     { scope: containerRef, dependencies: [shouldShow, isFinished] },
   )
 
-  if (!shouldShow || isFinished) return null
+  if (!mounted || !shouldShow || isFinished) return null
 
   return (
     <div

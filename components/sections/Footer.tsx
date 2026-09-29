@@ -1,9 +1,17 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import { navItems } from '@/lib/content'
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const [currentYear, setCurrentYear] = useState(2025)
+
+  useEffect(() => {
+    // Use setTimeout to avoid synchronous setState in effect
+    setTimeout(() => setCurrentYear(new Date().getFullYear()), 0)
+  }, [])
 
   return (
     <footer className="bg-surface-strong px-6 py-7 text-white/75 lg:px-10">

@@ -11,6 +11,8 @@ export function Cursor() {
 
   useGSAP(
     () => {
+      if (typeof window === 'undefined') return
+
       const mm = gsap.matchMedia()
 
       mm.add('(pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
