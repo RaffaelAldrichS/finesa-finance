@@ -205,6 +205,20 @@
   opacity: 0;
 }
 
+@media (prefers-contrast: more) {
+  :root {
+    --text-muted: var(--text);
+    --border: #7d9189;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --surface-elevated: #ffffff;
+    --surface-overlay: #000000;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
