@@ -26,11 +26,11 @@ export function Topics() {
           {topics.map((topic) => (
             <div
               key={topic.title}
-              className="group border-border bg-surface-elevated hover:border-brand rounded-2xl border p-5 transition hover:-translate-y-1"
+              className="group hover-lift border-border bg-surface-elevated hover:border-brand rounded-2xl border p-5 transition"
             >
               <div className="flex items-start justify-between">
                 <span className="text-brand text-lg font-bold">{topic.icon}</span>
-                <ArrowRight className="text-text-muted size-4 transition group-hover:translate-x-1" />
+                <ArrowRight className="text-text-muted arrow-shift size-4 transition" />
               </div>
               <h3 className="text-text mt-5 text-sm font-semibold">{topic.title}</h3>
               <p className="text-text-muted mt-2 text-[12px] leading-5">{topic.text}</p>

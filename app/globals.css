@@ -141,17 +141,14 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .hover-lift {
-    transition: transform var(--motion-base) var(--ease-out);
-  }
   .hover-lift:hover {
     transform: translateY(-2px);
   }
-  .hover-lift-subtle {
-    transition: transform var(--motion-base) var(--ease-out);
-  }
   .hover-lift-subtle:hover {
     transform: translateY(-1px);
+  }
+  .group:hover .arrow-shift {
+    translate: 0.25rem 0;
   }
   .btn-press:hover {
     translate: 0 -2px;
