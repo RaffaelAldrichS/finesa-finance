@@ -28,6 +28,7 @@ export function Testimonials() {
   const [focused, setFocused] = useState(false)
   const [manual, setManual] = useState(false)
   const [reduced, setReduced] = useState(false)
+  const [dragX, setDragX] = useState(0)
 
   const viewportRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
@@ -38,6 +39,9 @@ export function Testimonials() {
   const busyRef = useRef(false)
   const snapRef = useRef<{ pos: number } | null>(null)
   const safetyTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const dragState = useRef({ pointerId: -1, startX: 0, lastX: 0, lastT: 0, velocity: 0, dx: 0 })
+  const pendingDragX = useRef(0)
+  const dragFrame = useRef<number | null>(null)
 
   const paused = hovered || focused || manual || reduced
 
@@ -71,6 +75,7 @@ export function Testimonials() {
     return () => {
       if (manualTimer.current) clearTimeout(manualTimer.current)
       if (safetyTimer.current) clearTimeout(safetyTimer.current)
+      if (dragFrame.current !== null) cancelAnimationFrame(dragFrame.current)
     }
   }, [])
 
@@ -150,6 +155,84 @@ export function Testimonials() {
     }
   }
 
+  const rubberBand = (value: number, limit: number) => {
+    const magnitude = Math.abs(value)
+    if (magnitude <= limit) return value
+    const sign = value < 0 ? -1 : 1
+    return sign * (limit + (magnitude - limit) * 0.35)
+  }
+
+  const scheduleDrag = () => {
+    if (dragFrame.current !== null) return
+    dragFrame.current = requestAnimationFrame(() => {
+      dragFrame.current = null
+      setDragX(pendingDragX.current)
+    })
+  }
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (busyRef.current || event.pointerType === 'mouse') return
+    const now = performance.now()
+    dragState.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      lastX: event.clientX,
+      lastT: now,
+      velocity: 0,
+      dx: 0,
+    }
+    pendingDragX.current = 0
+    setDragX(0)
+    setAnimate(false)
+    setManual(true)
+    if (manualTimer.current) clearTimeout(manualTimer.current)
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragState.current
+    if (drag.pointerId !== event.pointerId || step <= 0) return
+    const now = performance.now()
+    const elapsed = Math.max(now - drag.lastT, 1)
+    drag.velocity = (event.clientX - drag.lastX) / elapsed
+    drag.lastX = event.clientX
+    drag.lastT = now
+    drag.dx = rubberBand(event.clientX - drag.startX, step)
+    pendingDragX.current = drag.dx
+    scheduleDrag()
+  }
+
+  const finishDrag = (event: React.PointerEvent<HTMLDivElement>, commit: boolean) => {
+    const drag = dragState.current
+    if (drag.pointerId !== event.pointerId) return
+    drag.pointerId = -1
+    if (dragFrame.current !== null) {
+      cancelAnimationFrame(dragFrame.current)
+      dragFrame.current = null
+    }
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    }
+
+    setAnimate(true)
+
+    const flick = Math.abs(drag.velocity) > 0.35
+    const passed = Math.abs(drag.dx) > step * 0.28
+    const direction =
+      Math.abs(drag.velocity) > Math.abs(drag.dx) / 120
+        ? Math.sign(drag.velocity)
+        : Math.sign(drag.dx)
+
+    if (commit && (flick || passed) && direction !== 0) {
+      move(indexRef.current - direction, true)
+    }
+
+    setDragX(0)
+
+    if (manualTimer.current) clearTimeout(manualTimer.current)
+    manualTimer.current = setTimeout(() => setManual(false), RESUME_MS)
+  }
+
   const active = testimonials[index]
 
   return (
@@ -178,14 +261,18 @@ export function Testimonials() {
             if (event.currentTarget.contains(event.relatedTarget as Node | null)) return
             setFocused(false)
           }}
-          className="carousel-edge-mask focus-visible:ring-text/50 mt-12 overflow-hidden rounded-2xl focus-visible:ring-2 focus-visible:outline-none"
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={(event) => finishDrag(event, true)}
+          onPointerCancel={(event) => finishDrag(event, false)}
+          className="carousel-edge-mask focus-visible:ring-text/50 mt-12 touch-pan-y overflow-hidden rounded-2xl focus-visible:ring-2 focus-visible:outline-none"
         >
           <div
             ref={trackRef}
             onTransitionEnd={handleTrackEnd}
             className="flex w-full items-stretch gap-4 sm:gap-6"
             style={{
-              transform: `translate3d(${offset - pos * step}px, 0, 0)`,
+              transform: `translate3d(${offset - pos * step + dragX}px, 0, 0)`,
               transition: animate ? 'transform 600ms var(--ease-out)' : 'none',
             }}
           >
