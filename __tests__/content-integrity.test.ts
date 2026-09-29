@@ -28,7 +28,7 @@ const hashTargets = new Set(
 describe('anchor integrity', () => {
   it('gives every nav item a section that exists', () => {
     for (const item of navItems) {
-      expect(sectionIds).toContain(item.toLowerCase())
+      expect(sectionIds).toContain(item.toLowerCase().replace(/\s+/g, '-'))
     }
   })
 
@@ -36,7 +36,10 @@ describe('anchor integrity', () => {
     // Sections are reachable from more than the nav — the header CTA and the
     // showcase button both point at #mulai — so the invariant is about all
     // in-page links, not just navItems.
-    const linked = new Set([...navItems.map((item) => item.toLowerCase()), ...hashTargets])
+    const linked = new Set([
+      ...navItems.map((item) => item.toLowerCase().replace(/\s+/g, '-')),
+      ...hashTargets,
+    ])
     expect(sectionIds.filter((id) => !linked.has(id))).toEqual([])
   })
 
@@ -44,9 +47,9 @@ describe('anchor integrity', () => {
     expect([...hashTargets].filter((target) => !sectionIds.includes(target))).toEqual([])
   })
 
-  it('does not advertise an FAQ that was never built', () => {
-    expect(navItems).not.toContain('FAQ')
-    expect(sectionIds).not.toContain('faq')
+  it('includes the newly built FAQ section', () => {
+    expect(navItems).toContain('FAQ')
+    expect(sectionIds).toContain('faq')
   })
 })
 
