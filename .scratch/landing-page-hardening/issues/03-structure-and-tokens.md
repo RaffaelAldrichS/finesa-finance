@@ -91,3 +91,28 @@ Semua acceptance criteria terpenuhi:
 - `pnpm build` ✓
 - `grep -r "\[#[0-9a-fA-F]\{6\}\]" app/` → 0 hasil
 - `grep -r "\[#[0-9a-fA-F]\{6\}\]" components/` → 0 hasil
+
+## Catatan audit (2026-09-29)
+
+Nilai token di atas sudah berubah setelah sesi audit apple-design. Daftar
+mapping tetap tercatat sebagai titik asal; **yang berlaku sekarang ada di
+`app/globals.css`**:
+
+| Token           | Nilai lama | Nilai kini |
+| --------------- | ---------- | ---------- |
+| `--brand`       | `#1da974`  | `#15805d`  |
+| `--brand-hover` | `#26c886`  | `#43dfa4`  |
+| `--text-muted`  | `#508078`  | `#4c7a72`  |
+
+- `--brand` yang lama hanya 2,8:1 sebagai teks kecil di atas krem dan
+  3,0:1 untuk putih di atasnya pada tombol `bg-brand`. Yang kini 4,6:1
+  dan 4,9:1.
+- `--brand-hover` lama 4,1:1 di atas `--surface-strong` — dan seluruh
+  pemakaian teksnya memang ada di section gelap, jadi dinaikkan ke
+  `#43dfa4` (4,6:1 pada badge `bg-brand/20`, 6,0:1 untuk `--on-brand`).
+- `--surface-strong` kini terpakai konsisten sebagai latar gelap Hero,
+  Journey, Showcase, CTA, dan Footer.
+- Dua blok media ditambahkan di akhir `globals.css`: `prefers-contrast:
+more` (turunkan `--text-muted` ke `--text`, gelapkan `--border` ke
+  3,1:1 di atas krem) dan `prefers-reduced-transparency: reduce`
+  (buat `--surface-elevated` dan `--surface-overlay` solid).

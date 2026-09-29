@@ -15,11 +15,11 @@ Buat testimonial carousel berfungsi. Labeli testimonial sebagai "Contoh".
 
 ### Konten prospectif (Showcase section)
 
-- [ ] "Mode Offline" → "Mode Offline (rencana)"
-- [ ] "Notifikasi & Pengingat" → "Notifikasi & Pengingat (akan hadir)"
-- [ ] "Tersedia di Semua Perangkat" → "Tersedia di Semua Perangkat (akan datang)"
+- [x] "Mode Offline" → "Mode Offline (rencana)"
+- [x] "Notifikasi & Pengingat" → "Notifikasi & Pengingat (akan hadir)"
+- [x] "Tersedia di Semua Perangkat" → "Tersedia di Semua Perangkat (akan datang)"
 - [ ] "Lihat Preview Aplikasi" → hapus atau ganti teks menjadi tidak menjanjikan
-- [ ] "Bergabung bersama ribuan pengguna" → ganti menjadi prospectif
+- [x] "Bergabung bersama ribuan pengguna" → ganti menjadi prospectif
 
 ### Testimonial (Kenapa Finesa section)
 
@@ -37,7 +37,7 @@ Buat testimonial carousel berfungsi. Labeli testimonial sebagai "Contoh".
 - [x] Indikator posisi: dots atau angka (1/3)
 - [x] CSS: `overflow: hidden` pada container, translate untuk sliding
 - [x] Transisi: CSS transition (bukan GSAP) untuk simplicity
-- [ ] Mobile: touch swipe? (opsional, bisa ditambahkan nanti)
+- [x] Mobile: touch swipe? (opsional, bisa ditambahkan nanti)
 
 ### Verification
 
@@ -47,7 +47,7 @@ Buat testimonial carousel berfungsi. Labeli testimonial sebagai "Contoh".
 - [x] Klik prev/next → testimonial berubah
 - [x] Keyboard arrow → testimonial berubah
 - [x] Label "Contoh" terlihat jelas
-- [ ] Fitur "Mode Offline" dll pakai bahasa prospectif
+- [x] Fitur "Mode Offline" dll pakai bahasa prospectif
 
 ## Catatan implementasi (impeccable polish, 2026-09-29)
 
@@ -105,3 +105,27 @@ AC "wrap around" di atas jadi benar-benar terpenuhi.
   dengan `transition: transform 200ms var(--ease-out)`.
 - Untuk "Contoh": bisa pakai `<span class="text-[10px] text-text-muted">(Contoh)</span>`
   atau badge yang lebih prominent.
+
+## Catatan penutup (sesi audit apple-design, 2026-09-29)
+
+- Tiga kutip AC prospectif di atas sudah terpenuhi dengan kata bantu yang
+  sedikit berbeda dari rumusan awal: "Mode Offline" dan "Notifikasi &
+  Pengingat" sama-sama diberi **"(rencana)"**, "Tersedia di Semua
+  Perangkat" diberi **"(akan tersedia)"**. Rumusan AC dianggap terpenuhi
+  karena maksudnya — tidak ada yang ditampilkan sebagai fitur yang sudah
+  ada. Heading section juga sudah menjadi "Pengalaman Belajar Finesa
+  (Rencana)".
+- AC "Lihat Preview Aplikasi" (baris 21) **satu-satunya yang masih terbuka**.
+  Tombolnya ada di `components/sections/Showcase.tsx:43` dan mengarah ke
+  `#mulai`, tetapi labelnya masih menjanjikan sebuah preview yang tidak
+  pernah ada. Perlu keputusan copywriting (mis. "Lihat Cara Daftar" atau
+  "Lihat Rencana Rilis") — sengaja tidak diubah diam-diam karena menyangkut
+  suara merek.
+- AC `aria-live` di baris 36 kini penuh **di status sr-only**, bukan di
+  viewport carousel: slice 7 memindahkannya karena dua announcer (region
+  dan status) menyebut perubahan yang sama dua kali kepada pembaca layar.
+- Touch swipe (baris 40) diimplementasikan di commit `8730547` — pointer
+  drag dengan rubber-band satu kartu, threshold 28% / 0,35 px per ms,
+  `touch-action: pan-y`, dan snap-back saat scroll vertikal membatalkan
+  gesture. **Belum diverifikasi di perangkat sungguhan** — lihat
+  `10-audit-hardening.md`.
